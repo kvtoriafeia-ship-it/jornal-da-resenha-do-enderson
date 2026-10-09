@@ -1,277 +1,410 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Jornal da Resenha</title>
+    <title>Jornal da Resenha | Notícias da Galera</title>
+    <meta name="description" content="O Jornal da Resenha: games, tecnologia e as melhores resenhas da galera.">
 
     <style>
-/* VISUAL GERAL */
-* {
-    box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    margin: 0;
-    background: #f1f3f5;
-    color: #222;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.7;
-}
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 20px;
+        }
 
-header {
-    background: linear-gradient(135deg, #151515, #383838);
-    color: white;
-    text-align: center;
-    padding: 35px 15px;
-    border-bottom: 5px solid #e51c23;
-}
+        body {
+            background: #f0f2f5;
+            color: #202124;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
 
-header h1 {
-    font-size: clamp(26px, 5vw, 42px);
-    margin: 0;
-    font-weight: 900;
-}
+        header {
+            background: linear-gradient(135deg, #111, #303030);
+            color: white;
+            text-align: center;
+            padding: 35px 16px;
+            border-bottom: 5px solid #e51c23;
+        }
 
-header p {
-    color: #ddd;
-    margin-bottom: 0;
-}
+        header h1 {
+            font-size: clamp(27px, 5vw, 44px);
+            line-height: 1.25;
+            font-weight: 900;
+        }
 
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    background: #e51c23;
-    padding: 12px;
-}
+        header h1 span {
+            color: #ff2630;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 8px 14px;
-    border-radius: 8px;
-}
+        header p {
+            color: #ddd;
+            margin-top: 8px;
+        }
 
-nav a:hover {
-    background: #b91319;
-}
+        nav {
+            background: #e51c23;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+        }
 
-main {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 0 16px;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 9px 16px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
 
-.principal,
-.noticia {
-    background: white;
-    padding: 24px;
-    margin-bottom: 22px;
-    border-radius: 14px;
-    box-shadow: 0 4px 16px #0000000d;
-}
+        nav a:hover,
+        nav a:focus-visible {
+            background: #b31319;
+        }
 
-.principal {
-    border-top: 5px solid #e51c23;
-}
+        main {
+            max-width: 1150px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
 
-.noticia {
-    border-left: 5px solid #e51c23;
-    transition: transform 0.2s;
-}
+        .secao-titulo {
+            font-size: 26px;
+            margin: 35px 0 18px;
+            border-left: 5px solid #e51c23;
+            padding-left: 12px;
+        }
 
-.noticia:hover {
-    transform: translateY(-3px);
-}
+        .principal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+            align-items: center;
+            background: white;
+            padding: 22px;
+            border-radius: 16px;
+            box-shadow: 0 5px 22px #0000000d;
+            border-top: 5px solid #e51c23;
+        }
 
-.categoria {
-    color: #d71920;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
+        .imagem-principal {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #ddd;
+        }
 
-footer {
-    background: #151515;
-    color: white;
-    text-align: center;
-    padding: 25px 12px;
-    border-top: 4px solid #e51c23;
-}
+        .categoria {
+            color: #d71920;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-@media (max-width: 600px) {
-    main {
-        margin: 20px auto;
-    }
+        .principal h2 {
+            font-size: clamp(25px, 3vw, 36px);
+            line-height: 1.2;
+            margin: 10px 0 16px;
+        }
 
-    .principal,
-    .noticia {
-        padding: 18px;
-    }
-}
+        .principal p:not(.categoria) {
+            color: #444;
+            margin-bottom: 12px;
+        }
 
-       
-/* IMAGENS DAS NOTÍCIAS */
-.imagem-noticia {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    display: block;
-    border-radius: 12px;
-    margin: 15px 0;
-    background: #e5e7eb;
-}
+        .noticias-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
 
-/* DESTAQUE DA MANCHETE */
-.principal {
-    overflow: hidden;
-    position: relative;
-}
+        .noticia {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: white;
+            padding: 16px;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px #0000000d;
+            border: 1px solid #e8e8e8;
+            transition: transform .2s, box-shadow .2s;
+        }
 
-.principal img {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 12px;
-}
+        .noticia:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px #00000014;
+        }
 
-/* CARTÕES DAS NOTÍCIAS */
-.noticias-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-}
+        .imagem-noticia {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            background: #ddd;
+        }
 
-.noticias-grid .noticia {
-    margin-top: 0;
-}
+        .noticia h3 {
+            font-size: 21px;
+            line-height: 1.3;
+            margin: 6px 0 10px;
+        }
 
-/* BOTÃO DE LEITURA */
-.link-noticia {
-    display: inline-block;
-    background: #e51c23;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 16px;
-    border-radius: 8px;
-    margin-top: 10px;
-    transition: background 0.2s;
-}
+        .noticia p:not(.categoria) {
+            color: #505050;
+            margin-bottom: 15px;
+        }
 
-.link-noticia:hover {
-    background: #b91319;
-}
+        .link-noticia {
+            display: inline-block;
+            margin-top: auto;
+            background: #e51c23;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 9px 15px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
 
-/* CELULAR */
-@media (max-width: 650px) {
-    .noticias-grid {
-        grid-template-columns: 1fr;
-    }
+        .link-noticia:hover {
+            background: #b31319;
+        }
 
-    .imagem-noticia {
-        height: 200px;
-    }
-}
+        .sobre {
+            margin-top: 35px;
+            padding: 25px;
+            background: white;
+            border-radius: 14px;
+            border-left: 5px solid #e51c23;
+        }
 
+        footer {
+            background: #151515;
+            color: white;
+            text-align: center;
+            padding: 28px 16px;
+            margin-top: 45px;
+            border-top: 4px solid #e51c23;
+        }
+
+        footer p + p {
+            color: #ccc;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 800px) {
+            .principal {
+                grid-template-columns: 1fr;
+            }
+
+            .imagem-principal {
+                height: 260px;
+            }
+
+            .noticias-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 550px) {
+            header {
+                padding: 28px 12px;
+            }
+
+            nav {
+                gap: 4px;
+            }
+
+            nav a {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+
+            main {
+                margin: 20px auto;
+                padding: 0 12px;
+            }
+
+            .principal {
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .imagem-principal {
+                height: 210px;
+            }
+
+            .noticias-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .imagem-noticia {
+                height: 210px;
+            }
+
+            .secao-titulo {
+                font-size: 23px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>📰 JORNAL DA RESENHA</h1>
-        <p>As notícias mais resenheiras da galera </p>
+    <header id="inicio">
+        <h1>📰 JORNAL DA <span>RESENHA</span></h1>
+        <p>As notícias mais resenheiras da galera 😂</p>
     </header>
 
-    <nav>
-        <a href="#">Início</a>
-        <a href="#">Resenhas</a>
-        <a href="#">Games</a>
-        <a href="#">Tecnologia</a>
+    <nav aria-label="Menu principal">
+        <a href="#inicio">🏠 Início</a>
+        <a href="#resenhas">😂 Resenhas</a>
+        <a href="#games">🎮 Games</a>
+        <a href="#tecnologia">💻 Tecnologia</a>
     </nav>
 
     <main>
 
-        <section class="principal">
-            <p class="categoria"> REPORTAGEM DO DIA</p>
+        <section class="principal" aria-labelledby="manchete">
+            <img
+                class="imagem-principal"
+                src="https://placehold.co/900x600/252525/ffffff?text=Jornal+da+Resenha"
+                alt="Imagem ilustrativa da reportagem do dia"
+            >
 
-            <h2>
-                O mistério da discussão no recreio
-            </h2>
+            <div>
+                <p class="categoria">🔴 Reportagem do dia</p>
 
-            <p>
-                Dois adolesente onde o nome(paulo) e o (quibao)
-                o quibao e gay e o paulo nao e mas o quibao pidiu
-                o paulo en namoro no recreio e o paulo n aceito 
-                ai o quibao surto e queria bate no paulo 
-            
-                
-            
-            </p>
+                <h2 id="manchete">
+                    O mistério da discussão no recreio
+                </h2>
 
-            <p>
-                Até agora, ninguém sabe exatamente como tudo começou.
-                Nossa redação continuará investigando. 
-            </p>
+                <p>
+                    Dois estudantes fictícios tiveram um desentendimento
+                    durante o intervalo e a situação virou assunto
+                    entre os colegas.
+                </p>
+
+                <p>
+                    O que realmente aconteceu? Nossa redação imaginária
+                    segue investigando esse mistério da resenha!
+                </p>
+            </div>
         </section>
 
-        <article class="noticia">
-            <p class="categoria"> RESENHA</p>
+        <section id="resenhas">
+            <h2 class="secao-titulo">😂 Últimas resenhas</h2>
 
-            <h2>
-                O lanche que desapareceu misteriosamente
-            </h2>
+            <div class="noticias-grid">
+
+                <article class="noticia">
+                    <img
+                        class="imagem-noticia"
+                        src="https://placehold.co/600x400/68452f/ffffff?text=O+Lanche"
+                        alt="Ilustração da história do lanche"
+                        loading="lazy"
+                    >
+
+                    <p class="categoria">Resenha</p>
+
+                    <h3>O lanche que desapareceu misteriosamente</h3>
+
+                    <p>
+                        Um lanche sumiu durante o intervalo.
+                        O detetive da turma está investigando.
+                        O suspeito? A fome, claro! 😂
+                    </p>
+
+                    <a class="link-noticia" href="#sobre">
+                        Ler mais →
+                    </a>
+                </article>
+
+                <article class="noticia" id="games">
+                    <img
+                        class="imagem-noticia"
+                        src="https://placehold.co/600x400/24245c/ffffff?text=Games"
+                        alt="Ilustração sobre videogames"
+                        loading="lazy"
+                    >
+
+                    <p class="categoria">🎮 Games</p>
+
+                    <h3>Quem é o melhor jogador da galera?</h3>
+
+                    <p>
+                        Roblox, Minecraft e muitos desafios!
+                        Quem será que vai conquistar o título
+                        de campeão da resenha?
+                    </p>
+
+                    <a class="link-noticia" href="#sobre">
+                        Ler mais →
+                    </a>
+                </article>
+
+                <article class="noticia" id="tecnologia">
+                    <img
+                        class="imagem-noticia"
+                        src="https://placehold.co/600x400/244d42/ffffff?text=Tecnologia"
+                        alt="Ilustração sobre programação"
+                        loading="lazy"
+                    >
+
+                    <p class="categoria">💻 Tecnologia</p>
+
+                    <h3>Dev Enderson faz um site só pra resenhar 😂</h3>
+
+                    <p>
+                        O Dev Enderson continua aprendendo HTML e CSS
+                        e melhorando o Jornal da Resenha a cada versão.
+                    </p>
+
+                    <a class="link-noticia" href="#sobre">
+                        Ler mais →
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="sobre" id="sobre">
+            <h2>📰 Sobre o Jornal</h2>
 
             <p>
-                Um lanche desapareceu durante o intervalo.
-                As investigações continuam e o principal suspeito
-                é... alguém com muita fome vulgo quibao 
+                O Jornal da Resenha é um projeto feito pelo
+                Dev Enderson para aprender programação e compartilhar
+                histórias fictícias, games e tecnologia.
             </p>
-        </article>
-
-        <article class="noticia">
-            <p class="categoria">🎮 GAMES</p>
-
-            <h2>
-                Quem é o melhor jogador da galera?
-            </h2>
 
             <p>
-                A disputa está aberta. Cada jogador terá que
-                provar suas habilidades para conquistar o título
-                de melhor jogador de roblox/minecreft
-                
+                Aqui a resenha é divertida e respeita todo mundo!
             </p>
-        </article>
-
-        <article class="noticia">
-            <p class="categoria">💻 TECNOLOGIA</p>
-
-            <h2>
-                Dev Enderson continua programando
-            </h2>
-
-            <p>
-                O desenvolvedor acaba de criar mais uma versão
-                do Jornal da Resenha usando HTML e CSS.
-                
-            </p>
-        </article>
+        </section>
 
     </main>
 
     <footer>
-        Jornal da Resenha © 2026
-        <br>
-        dev enderson faz site pra resenhar kkkkk
+        <p><strong>Jornal da Resenha © 2026</strong></p>
+        <p>Feito pelo Dev Enderson 💻</p>
+        <p>Resenha é vida! 😂</p>
     </footer>
 
 </body>
 </html>
-```
+
