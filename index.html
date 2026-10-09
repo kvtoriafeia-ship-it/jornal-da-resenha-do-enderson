@@ -8,6 +8,113 @@
     <title>Jornal da Resenha</title>
 
     <style>
+/* VISUAL GERAL */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f1f3f5;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+}
+
+header {
+    background: linear-gradient(135deg, #151515, #383838);
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+    border-bottom: 5px solid #e51c23;
+}
+
+header h1 {
+    font-size: clamp(26px, 5vw, 42px);
+    margin: 0;
+    font-weight: 900;
+}
+
+header p {
+    color: #ddd;
+    margin-bottom: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: #e51c23;
+    padding: 12px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+nav a:hover {
+    background: #b91319;
+}
+
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 16px;
+}
+
+.principal,
+.noticia {
+    background: white;
+    padding: 24px;
+    margin-bottom: 22px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px #0000000d;
+}
+
+.principal {
+    border-top: 5px solid #e51c23;
+}
+
+.noticia {
+    border-left: 5px solid #e51c23;
+    transition: transform 0.2s;
+}
+
+.noticia:hover {
+    transform: translateY(-3px);
+}
+
+.categoria {
+    color: #d71920;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+footer {
+    background: #151515;
+    color: white;
+    text-align: center;
+    padding: 25px 12px;
+    border-top: 4px solid #e51c23;
+}
+
+@media (max-width: 600px) {
+    main {
+        margin: 20px auto;
+    }
+
+    .principal,
+    .noticia {
+        padding: 18px;
+    }
+}
+
        
 /* IMAGENS DAS NOTÍCIAS */
 .imagem-noticia {
