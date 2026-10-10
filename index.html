@@ -1,31 +1,27 @@
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Notícias de animes, tecnologia, games e cultura pop.">
-  <title>Jornal da Resenha | Notícias Geek</title>
+  <title>Jornal da Resenha</title>
 
   <style>
     :root {
-      --fundo: #f4f5f9;
+      --fundo: #f3f4f8;
       --cartao: #ffffff;
-      --texto: #202333;
-      --suave: #70758a;
-      --borda: #e5e7ef;
-      --destaque: #e63946;
-      --menu: #171927;
+      --texto: #202033;
+      --secundario: #66677a;
+      --destaque: #ff8a00;
+      --borda: #e2e3ec;
     }
 
     body.escuro {
-      --fundo: #101119;
-      --cartao: #1c1e2b;
-      --texto: #f4f5fb;
-      --suave: #b4b8ca;
-      --borda: #303344;
-      --menu: #0a0b11;
+      --fundo: #10111b;
+      --cartao: #1b1c2b;
+      --texto: #f5f5ff;
+      --secundario: #c0c1d0;
+      --borda: #343548;
     }
 
     * {
@@ -41,160 +37,124 @@
       background: var(--fundo);
       color: var(--texto);
       font-family: Arial, Helvetica, sans-serif;
-      transition: background .25s, color .25s;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    header {
+      background: #171729;
+      color: white;
+      padding: 25px 6%;
+      border-bottom: 4px solid var(--destaque);
+    }
+
+    .topo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      margin: 0;
+    }
+
+    .logo span {
+      color: var(--destaque);
+    }
+
+    .subtitulo {
+      margin: 8px 0 0;
+      color: #d0d0e0;
     }
 
     button, input {
       font: inherit;
     }
 
-    header {
-      background: var(--menu);
-      color: white;
-    }
-
-    .topo {
-      max-width: 1150px;
-      margin: auto;
-      padding: 25px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 27px;
-      font-weight: 900;
-    }
-
-    .logo span {
-      color: #ff626b;
-    }
-
-    .subtitulo {
-      margin: 7px 0 0;
-      color: #c5c7d3;
-      font-size: 13px;
-    }
-
-    .tema {
-      padding: 10px 14px;
-      border: 1px solid #515365;
-      border-radius: 22px;
-      color: white;
-      background: transparent;
+    button {
       cursor: pointer;
     }
 
-    nav {
+    .botao-tema {
       background: var(--destaque);
-      padding: 13px 15px;
+      color: #171729;
+      border: none;
+      padding: 11px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    nav {
       display: flex;
-      justify-content: center;
-      gap: 28px;
+      gap: 10px;
+      padding: 16px 6%;
+      background: var(--cartao);
+      border-bottom: 1px solid var(--borda);
       flex-wrap: wrap;
     }
 
-    nav a {
+    nav button, .filtro {
+      border: 1px solid var(--borda);
+      background: var(--cartao);
+      color: var(--texto);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    nav button:hover, .filtro:hover,
+    .filtro.ativo {
+      background: var(--destaque);
+      color: #171729;
+      border-color: var(--destaque);
+    }
+
+    main {
+      width: min(1200px, 90%);
+      margin: 30px auto;
+    }
+
+    .destaque {
+      padding: 30px;
+      border-radius: 16px;
       color: white;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
+      background: linear-gradient(120deg, #262347, #6c286d, #e46c21);
+      margin-bottom: 30px;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 1150px;
-      padding: 0 20px;
-      margin: auto;
-    }
-
-    .boas-vindas {
-      padding: 35px 0 20px;
-    }
-
-    .etiqueta {
-      color: var(--destaque);
-      font-weight: bold;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
-    .boas-vindas h1 {
-      font-size: clamp(27px, 5vw, 42px);
+    .destaque h2 {
+      font-size: clamp(26px, 4vw, 42px);
       margin: 10px 0;
     }
 
-    .boas-vindas p {
-      color: var(--suave);
-      line-height: 1.6;
+    .destaque p {
+      line-height: 1.7;
+      max-width: 700px;
     }
 
-    .pesquisa {
-      display: flex;
-      gap: 10px;
-      margin: 20px 0 25px;
-    }
-
-    .pesquisa input {
+    .busca {
       width: 100%;
-      min-width: 0;
       padding: 14px 16px;
       border: 1px solid var(--borda);
       border-radius: 10px;
       background: var(--cartao);
       color: var(--texto);
-      outline-color: var(--destaque);
-    }
-
-    .pesquisa button {
-      padding: 0 20px;
-      border: 0;
-      border-radius: 10px;
-      color: white;
-      background: var(--destaque);
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .secao-titulo {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin: 30px 0 18px;
-    }
-
-    .secao-titulo h2 {
-      margin: 0;
-      font-size: 24px;
+      margin-bottom: 18px;
     }
 
     .filtros {
       display: flex;
+      gap: 10px;
       flex-wrap: wrap;
-      gap: 9px;
-      margin-bottom: 22px;
+      margin-bottom: 25px;
     }
 
-    .filtro {
-      border: 1px solid var(--borda);
-      color: var(--texto);
-      background: var(--cartao);
-      padding: 9px 14px;
-      border-radius: 22px;
-      cursor: pointer;
-    }
-
-    .filtro.ativo {
-      background: var(--destaque);
-      border-color: var(--destaque);
-      color: white;
+    .titulo-secao {
+      margin: 28px 0 18px;
+      font-size: 27px;
     }
 
     .grade {
@@ -205,400 +165,456 @@
     }
 
     .noticia {
+      min-width: 0;
       overflow: hidden;
-      border: 1px solid var(--borda);
+      border-radius: 14px;
       background: var(--cartao);
-      border-radius: 15px;
-      transition: transform .2s, box-shadow .2s;
+      border: 1px solid var(--borda);
+      box-shadow: 0 5px 18px #00000012;
+      transition: transform 0.2s;
     }
 
     .noticia:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 28px #00000012;
     }
 
-    .noticia img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
+    .imagem-noticia {
       display: block;
-      background: var(--borda);
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      background: #292940;
     }
 
-    .conteudo {
-      padding: 19px;
+    .conteudo-noticia {
+      padding: 18px;
     }
 
     .categoria {
       display: inline-block;
-      color: var(--destaque);
-      font-size: 11px;
-      font-weight: bold;
-      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
       letter-spacing: 1px;
+      color: var(--destaque);
+      margin-bottom: 8px;
     }
 
-    .noticia h3 {
-      font-size: 19px;
-      line-height: 1.4;
-      margin: 10px 0;
+    .conteudo-noticia h3 {
+      font-size: 20px;
+      line-height: 1.35;
+      margin: 4px 0 12px;
     }
 
-    .noticia p {
-      color: var(--suave);
-      font-size: 14px;
+    .conteudo-noticia p {
+      color: var(--secundario);
       line-height: 1.65;
-      margin-bottom: 14px;
     }
 
     .data {
-      color: var(--suave);
+      display: block;
       font-size: 12px;
+      color: var(--secundario);
+      margin-top: 14px;
     }
 
-    .vazio {
-      display: none;
-      padding: 30px;
-      text-align: center;
-      color: var(--suave);
+    .link-noticia {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--destaque);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .link-noticia:hover {
+      text-decoration: underline;
     }
 
     .sobre {
       background: var(--cartao);
       border: 1px solid var(--borda);
-      border-radius: 14px;
       padding: 25px;
+      border-radius: 14px;
       margin-bottom: 35px;
-    }
-
-    .sobre p {
-      color: var(--suave);
-      line-height: 1.7;
-    }
-
-    footer {
-      background: var(--menu);
-      color: white;
-      text-align: center;
-      padding: 28px 20px;
       line-height: 1.8;
     }
 
-    footer small {
-      color: #bfc1d0;
+    #mensagemVazia {
+      color: var(--secundario);
+      padding: 20px 0;
     }
 
-    @media (max-width: 850px) {
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #171729;
+      color: #eeeeff;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 900px) {
       .grade {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 560px) {
-      .topo {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      nav {
-        gap: 16px;
-      }
-
+    @media (max-width: 600px) {
       .grade {
         grid-template-columns: 1fr;
       }
 
-      .noticia img {
-        height: 220px;
+      .logo {
+        font-size: 25px;
       }
 
-      .pesquisa button {
-        padding: 0 13px;
+      .destaque {
+        padding: 22px;
+      }
+
+      .imagem-noticia {
+        height: 220px;
       }
     }
   </style>
 </head>
 
 <body>
-
   <header>
     <div class="topo">
       <div>
-        <div class="logo">📰 JORNAL <span>DA RESENHA</span></div>
-        <p class="subtitulo">Animes, tecnologia, games e cultura geek.</p>
+        <h1 class="logo">📰 Jornal da <span>Resenha</span></h1>
+        <p class="subtitulo">Notícias, cultura geek e muita resenha!</p>
       </div>
 
-      <button class="tema" id="botaoTema" type="button">
+      <button class="botao-tema" id="botaoTema">
         🌙 Modo escuro
       </button>
     </div>
   </header>
 
-  <nav>
-    <a href="#inicio">Início</a>
-    <a href="#noticias">Notícias</a>
-    <a href="#animes">Animes</a>
-    <a href="#tecnologia">Tecnologia</a>
-    <a href="#games">Games</a>
-    <a href="#sobre">Sobre</a>
+  <nav aria-label="Navegação principal">
+    <button data-filtro="todos">🏠 Início</button>
+    <button data-filtro="animes">🎌 Animes</button>
+    <button data-filtro="tecnologia">💻 Tecnologia</button>
+    <button data-filtro="games">🎮 Games</button>
+    <button data-filtro="filmes">🎬 Filmes e séries</button>
+    <button data-filtro="sobre">ℹ️ Sobre</button>
   </nav>
 
-  <main class="container" id="inicio">
-
-    <section class="boas-vindas">
-      <span class="etiqueta">🔥 Seu portal geek</span>
-      <h1>O que está acontecendo no mundo geek?</h1>
+  <main>
+    <section class="destaque">
+      <span>🔥 BEM-VINDO AO PORTAL</span>
+      <h2>O mundo inteiro cabe na resenha!</h2>
       <p>
-        Descubra novidades de animes, tecnologia, jogos e entretenimento
-        em um só lugar.
+        Fique por dentro das novidades de animes, tecnologia,
+        games, filmes e séries. Escolha uma categoria e confira
+        as matérias do Jornal da Resenha.
       </p>
+    </section>
 
-      <form class="pesquisa" id="formPesquisa">
-        <input
-          id="campoPesquisa"
-          type="search"
-          placeholder="Pesquisar notícias..."
-          aria-label="Pesquisar notícias"
+    <input
+      class="busca"
+      id="busca"
+      type="search"
+      placeholder="🔎 Pesquisar notícias..."
+      aria-label="Pesquisar notícias"
+    >
+
+    <div class="filtros" aria-label="Filtrar notícias">
+      <button class="filtro ativo" data-filtro="todos">Todas</button>
+      <button class="filtro" data-filtro="animes">🎌 Animes</button>
+      <button class="filtro" data-filtro="tecnologia">💻 Tecnologia</button>
+      <button class="filtro" data-filtro="games">🎮 Games</button>
+      <button class="filtro" data-filtro="filmes">🎬 Filmes e séries</button>
+    </div>
+
+    <h2 class="titulo-secao" id="tituloSecao">📰 Últimas notícias</h2>
+
+    <div class="grade" id="gradeNoticias">
+
+      <!-- NOTÍCIA 1: ANIMES -->
+      <article class="noticia" data-categoria="animes">
+        <img
+          class="imagem-noticia"
+          src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80"
+          alt="Ilustração inspirada no universo dos animes"
+          loading="lazy"
         >
-        <button type="submit">Buscar</button>
-      </form>
-    </section>
+        <div class="conteudo-noticia">
+          <span class="categoria">ANIMES • TEMPORADA</span>
+          <h3>Black Clover: novidades da segunda temporada</h3>
+          <p>
+            A programação de outono de 2026 inclui a nova temporada
+            de Black Clover. Confira as informações publicadas
+            sobre os lançamentos.
+          </p>
+          <a class="link-noticia"
+             href="https://www.crunchyroll.com/news/seasonal-lineup/2026/9/15/fall-anime-2026-crunchyroll"
+             target="_blank" rel="noopener noreferrer">
+            Ver programação →
+          </a>
+          <span class="data">Temporada de outubro de 2026</span>
+        </div>
+      </article>
 
-    <section id="noticias">
-      <div class="secao-titulo">
-        <h2>📰 Últimas matérias</h2>
-      </div>
+      <!-- NOTÍCIA 2: ANIMES -->
+      <article class="noticia" data-categoria="animes">
+        <img
+          class="imagem-noticia"
+          src="https://images.unsplash.com/photo-1601850494422-3cf14624b0b3?auto=format&fit=crop&w=900&q=80"
+          alt="Arte ilustrativa para notícia de anime"
+          loading="lazy"
+        >
+        <div class="conteudo-noticia">
+          <span class="categoria">ANIMES • NOVIDADE</span>
+          <h3>Diários de uma Apotecária: nova temporada</h3>
+          <p>
+            Maomao está entre os destaques da programação de animes
+            de outubro de 2026. Consulte a programação oficial
+            para acompanhar as novidades.
+          </p>
+          <a class="link-noticia"
+             href="https://www.crunchyroll.com/news/seasonal-lineup/2026/9/15/fall-anime-2026-crunchyroll"
+             target="_blank" rel="noopener noreferrer">
+            Ver programação →
+          </a>
+          <span class="data">Temporada de outubro de 2026</span>
+        </div>
+      </article>
 
-      <div class="filtros">
-        <button class="filtro ativo" data-categoria="todas">Todas</button>
-        <button class="filtro" data-categoria="animes" id="animes">🎌 Animes</button>
-        <button class="filtro" data-categoria="tecnologia" id="tecnologia">💻 Tecnologia</button>
-        <button class="filtro" data-categoria="games" id="games">🎮 Games</button>
-        <button class="filtro" data-categoria="filmes">🎬 Filmes e séries</button>
-      </div>
+      <!-- NOTÍCIA 3: ANIMES -->
+      <article class="noticia" data-categoria="animes">
+        <img
+          class="imagem-noticia"
+          src="https://images.unsplash.com/photo-1560972550-aba3456b5564?auto=format&fit=crop&w=900&q=80"
+          alt="Imagem ilustrativa de animação japonesa"
+          loading="lazy"
+        >
+        <div class="conteudo-noticia">
+          <span class="categoria">ANIMES • ESTREIAS</span>
+          <h3>Firefly Wedding entre as novidades anunciadas</h3>
+          <p>
+            A programação de outono traz novidades para quem
+            gosta de descobrir histórias diferentes. Veja a
+            lista oficial de títulos e lançamentos.
+          </p>
+          <a class="link-noticia"
+             href="https://www.crunchyroll.com/news/seasonal-lineup/2026/9/15/fall-anime-2026-crunchyroll"
+             target="_blank" rel="noopener noreferrer">
+            Ver programação →
+          </a>
+          <span class="data">Temporada de outubro de 2026</span>
+        </div>
+      </article>
 
-      <div class="grade" id="gradeNoticias">
+      <!-- NOTÍCIA 4: TECNOLOGIA -->
+      <article class="noticia" data-categoria="tecnologia">
+        <img
+          class="imagem-noticia"
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
+          alt="Pessoas trabalhando com computadores"
+          loading="lazy"
+        >
+        <div class="conteudo-noticia">
+          <span class="categoria">TECNOLOGIA</span>
+          <h3>Como a inteligência artificial está mudando a tecnologia</h3>
+          <p>
+            Conheça algumas aplicações da inteligência artificial
+            e entenda como essa tecnologia está presente em
+            ferramentas usadas no dia a dia.
+          </p>
+          <a class="link-noticia"
+             href="https://www.technologyreview.com/"
+             target="_blank" rel="noopener noreferrer">
+            Ler mais →
+          </a>
+          <span class="data">Matéria informativa</span>
+        </div>
+      </article>
 
-        <article class="noticia" data-categoria="animes">
-          <img
-            src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80"
-            alt="Ilustração relacionada ao universo dos animes"
-            loading="lazy"
-          >
-          <div class="conteudo">
-            <span class="categoria">🎌 Animes</span>
-            <h3>O universo dos animes continua conquistando fãs</h3>
-            <p>
-              Novas temporadas, personagens marcantes e histórias
-              emocionantes mantêm a comunidade de anime em movimento.
-            </p>
-            <span class="data">Matéria de exemplo</span>
-          </div>
-        </article>
+      <!-- NOTÍCIA 5: GAMES -->
+      <article class="noticia" data-categoria="games">
+        <img
+          class="imagem-noticia"
+          src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80"
+          alt="Equipamentos para jogos eletrônicos"
+          loading="lazy"
+        >
+        <div class="conteudo-noticia">
+          <span class="categoria">GAMES</span>
+          <h3>O universo dos games continua evoluindo</h3>
+          <p>
+            Dos jogos independentes aos grandes lançamentos,
+            descubra novidades, tendências e curiosidades
+            do mundo dos videogames.
+          </p>
+          <a class="link-noticia"
+             href="https://www.ign.com/"
+             target="_blank" rel="noopener noreferrer">
+            Ler mais →
+          </a>
+          <span class="data">Matéria informativa</span>
+        </div>
+      </article>
 
-        <article class="noticia" data-categoria="tecnologia">
-          <img
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
-            alt="Placa eletrônica com componentes tecnológicos"
-            loading="lazy"
-          >
-          <div class="conteudo">
-            <span class="categoria">💻 Tecnologia</span>
-            <h3>Como a inteligência artificial está mudando a tecnologia</h3>
-            <p>
-              Ferramentas inteligentes ajudam pessoas a estudar,
-              criar projetos e automatizar diferentes tarefas.
-            </p>
-            <span class="data">Matéria de exemplo</span>
-          </div>
-        </article>
+      <!-- NOTÍCIA 6: FILMES E SÉRIES -->
+      <article class="noticia" data-categoria="filmes">
+        <img
+          class="imagem-noticia"
+          src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80"
+          alt="Sala de cinema"
+          loading="lazy"
+        >
+        <div class="conteudo-noticia">
+          <span class="categoria">FILMES E SÉRIES</span>
+          <h3>O que assistir na próxima maratona?</h3>
+          <p>
+            Separe a pipoca e descubra filmes, séries e histórias
+            para colocar na sua lista de próximas sessões.
+          </p>
+          <a class="link-noticia"
+             href="https://www.imdb.com/"
+             target="_blank" rel="noopener noreferrer">
+            Descobrir títulos →
+          </a>
+          <span class="data">Dicas para sua próxima sessão</span>
+        </div>
+      </article>
 
-        <article class="noticia" data-categoria="games">
-          <img
-            src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80"
-            alt="Computador e equipamentos para jogos"
-            loading="lazy"
-          >
-          <div class="conteudo">
-            <span class="categoria">🎮 Games</span>
-            <h3>O mundo dos games vai muito além de jogar</h3>
-            <p>
-              Jogos também podem inspirar criatividade, trabalho em
-              equipe e o aprendizado de programação.
-            </p>
-            <span class="data">Matéria de exemplo</span>
-          </div>
-        </article>
+    </div>
 
-        <article class="noticia" data-categoria="tecnologia">
-          <img
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
-            alt="Notebook usado para programação"
-            loading="lazy"
-          >
-          <div class="conteudo">
-            <span class="categoria">💻 Programação</span>
-            <h3>HTML, CSS e JavaScript: o começo de um site</h3>
-            <p>
-              HTML organiza o conteúdo, CSS cuida da aparência e
-              JavaScript adiciona interatividade às páginas.
-            </p>
-            <span class="data">Guia para iniciantes</span>
-          </div>
-        </article>
-
-        <article class="noticia" data-categoria="filmes">
-          <img
-            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80"
-            alt="Sala de cinema com tela iluminada"
-            loading="lazy"
-          >
-          <div class="conteudo">
-            <span class="categoria">🎬 Filmes e séries</span>
-            <h3>Por que as adaptações de histórias famosas atraem fãs?</h3>
-            <p>
-              Filmes e séries baseados em livros, jogos e quadrinhos
-              levam universos conhecidos para novas telas.
-            </p>
-            <span class="data">Matéria de exemplo</span>
-          </div>
-        </article>
-
-        <article class="noticia" data-categoria="games">
-          <img
-            src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=900&q=80"
-            alt="Controle de videogame"
-            loading="lazy"
-          >
-          <div class="conteudo">
-            <span class="categoria">🎮 Cultura gamer</span>
-            <h3>Como começar a criar seu próprio jogo</h3>
-            <p>
-              Aprenda lógica de programação e comece com projetos
-              pequenos antes de construir um jogo maior.
-            </p>
-            <span class="data">Guia para iniciantes</span>
-          </div>
-        </article>
-
-      </div>
-
-      <p class="vazio" id="mensagemVazia">
-        Nenhuma matéria encontrada. Tente outra pesquisa!
-      </p>
-    </section>
+    <p id="mensagemVazia" hidden>
+      Nenhuma notícia encontrada. Tente outra pesquisa!
+    </p>
 
     <section class="sobre" id="sobre">
-      <span class="etiqueta">Quem somos</span>
-      <h2>Sobre o Jornal da Resenha</h2>
+      <h2>ℹ️ Sobre o Jornal da Resenha</h2>
       <p>
-        Somos um portal criado pelo Dev Ende para compartilhar
-        novidades e curiosidades sobre animes, tecnologia, games
-        e cultura geek.
+        O Jornal da Resenha é um portal de entretenimento com
+        notícias, curiosidades e conteúdos sobre animes,
+        tecnologia, games, filmes e séries.
       </p>
       <p>
-        As matérias desta versão são exemplos. Antes de publicar
-        notícias reais, confira as informações e acrescente fontes
-        confiáveis.
+        As matérias são exemplos que podem ser editados.
+        Consulte os links das fontes para ler informações
+        adicionais e conferir as notícias originais.
       </p>
     </section>
-
   </main>
 
   <footer>
-    📰 Jornal da Resenha © 2026
-    <br>
-    <small>Feito pelo Dev Ende 😎 | Animes • Tecnologia • Games</small>
+    <strong>📰 Jornal da Resenha</strong>
+    <p>Informação, entretenimento e resenha em um só lugar.</p>
+    <small>© 2026 Jornal da Resenha</small>
   </footer>
 
   <script>
-    // Alternar entre tema claro e escuro
     const botaoTema = document.getElementById("botaoTema");
-
-    function atualizarTema(escuro) {
-      document.body.classList.toggle("escuro", escuro);
-      botaoTema.textContent = escuro
-        ? "☀️ Modo claro"
-        : "🌙 Modo escuro";
-    }
-
-    let temaSalvo = false;
-
-    try {
-      temaSalvo = localStorage.getItem("tema-jornal") === "escuro";
-    } catch (erro) {
-      // O site continua funcionando se o armazenamento estiver bloqueado.
-    }
-
-    atualizarTema(temaSalvo);
-
-    botaoTema.addEventListener("click", function () {
-      const escuro = !document.body.classList.contains("escuro");
-      atualizarTema(escuro);
-
-      try {
-        localStorage.setItem("tema-jornal", escuro ? "escuro" : "claro");
-      } catch (erro) {
-        // A troca de tema ainda funciona nesta visita.
-      }
-    });
-
-    // Pesquisa e filtros das notícias
-    const campoPesquisa = document.getElementById("campoPesquisa");
-    const formPesquisa = document.getElementById("formPesquisa");
-    const filtros = document.querySelectorAll(".filtro");
-    const noticias = document.querySelectorAll(".noticia");
+    const busca = document.getElementById("busca");
+    const noticias = [...document.querySelectorAll(".noticia")];
+    const botoesFiltro = document.querySelectorAll("[data-filtro]");
+    const tituloSecao = document.getElementById("tituloSecao");
     const mensagemVazia = document.getElementById("mensagemVazia");
 
-    let categoriaAtual = "todas";
+    let categoriaAtual = "todos";
 
-    function filtrarNoticias() {
-      const termo = campoPesquisa.value.trim().toLocaleLowerCase("pt-BR");
-      let quantidadeVisivel = 0;
-
-      noticias.forEach(function (noticia) {
-        const categoria = noticia.dataset.categoria;
-        const texto = noticia.textContent.toLocaleLowerCase("pt-BR");
-        const combinaCategoria =
-          categoriaAtual === "todas" || categoria === categoriaAtual;
-        const combinaPesquisa = texto.includes(termo);
-        const mostrar = combinaCategoria && combinaPesquisa;
-
-        noticia.style.display = mostrar ? "" : "none";
-
-        if (mostrar) {
-          quantidadeVisivel++;
-        }
-      });
-
-      mensagemVazia.style.display =
-        quantidadeVisivel === 0 ? "block" : "none";
+    // Restaurar tema escolhido
+    try {
+      if (localStorage.getItem("temaJornal") === "escuro") {
+        document.body.classList.add("escuro");
+      }
+    } catch (erro) {
+      // O site continua funcionando mesmo sem armazenamento.
     }
 
-    formPesquisa.addEventListener("submit", function (evento) {
-      evento.preventDefault();
-      filtrarNoticias();
+    atualizarBotaoTema();
+
+    botaoTema.addEventListener("click", () => {
+      document.body.classList.toggle("escuro");
+
+      try {
+        localStorage.setItem(
+          "temaJornal",
+          document.body.classList.contains("escuro") ? "escuro" : "claro"
+        );
+      } catch (erro) {
+        // O tema funciona até a página ser recarregada.
+      }
+
+      atualizarBotaoTema();
     });
 
-    campoPesquisa.addEventListener("input", filtrarNoticias);
+    function atualizarBotaoTema() {
+      const escuro = document.body.classList.contains("escuro");
+      botaoTema.textContent = escuro ? "☀️ Modo claro" : "🌙 Modo escuro";
+    }
 
-    filtros.forEach(function (filtro) {
-      filtro.addEventListener("click", function () {
-        categoriaAtual = filtro.dataset.categoria;
+    const nomesCategorias = {
+      todos: "📰 Últimas notícias",
+      animes: "🎌 Notícias de animes",
+      tecnologia: "💻 Notícias de tecnologia",
+      games: "🎮 Notícias de games",
+      filmes: "🎬 Filmes e séries"
+    };
 
-        filtros.forEach(function (item) {
-          item.classList.toggle("ativo", item === filtro);
+    function filtrarNoticias() {
+      const termo = busca.value.trim().toLocaleLowerCase("pt-BR");
+      let quantidadeVisivel = 0;
+
+      noticias.forEach((noticia) => {
+        const categoria = noticia.dataset.categoria;
+        const texto = noticia.textContent.toLocaleLowerCase("pt-BR");
+        const categoriaCorreta =
+          categoriaAtual === "todos" || categoria === categoriaAtual;
+        const textoCorreto = texto.includes(termo);
+        const mostrar = categoriaCorreta && textoCorreto;
+
+        noticia.hidden = !mostrar;
+
+        if (mostrar) quantidadeVisivel++;
+      });
+
+      mensagemVazia.hidden = quantidadeVisivel > 0;
+    }
+
+    function selecionarCategoria(categoria) {
+      if (categoria === "sobre") {
+        document.getElementById("sobre").scrollIntoView({
+          behavior: "smooth"
         });
+        return;
+      }
 
-        filtrarNoticias();
-        document.getElementById("noticias").scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+      categoriaAtual = categoria;
+
+      tituloSecao.textContent =
+        nomesCategorias[categoria] || nomesCategorias.todos;
+
+      document.querySelectorAll(".filtro").forEach((botao) => {
+        botao.classList.toggle(
+          "ativo",
+          botao.dataset.filtro === categoria
+        );
+      });
+
+      filtrarNoticias();
+
+      document.getElementById("gradeNoticias").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    botoesFiltro.forEach((botao) => {
+      botao.addEventListener("click", () => {
+        selecionarCategoria(botao.dataset.filtro);
       });
     });
-  </script>
 
+    busca.addEventListener("input", filtrarNoticias);
+  </script>
 </body>
 </html>
+
+
+
 
