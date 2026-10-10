@@ -612,6 +612,88 @@
 
     busca.addEventListener("input", filtrarNoticias);
   </script>
+  
+<section id="localizacao-brincadeira" style="
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 24px;
+  background: #1b1c2b;
+  color: white;
+  border-radius: 16px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+">
+  <h2>🕵️ Desafio dos amigos</h2>
+  <p>
+    Quer participar? Clique para compartilhar sua localização.
+    Você decide se autoriza ou não.
+  </p>
+
+  <button id="mostrarLocalizacao" style="
+    background: #ff8a00;
+    color: #171729;
+    border: 0;
+    border-radius: 8px;
+    padding: 13px 18px;
+    font-weight: bold;
+    cursor: pointer;
+  ">
+    📍 Mostrar minha localização
+  </button>
+
+  <p id="resultadoLocalizacao" aria-live="polite"></p>
+</section>
+
+<script>
+(() => {
+  const botao = document.getElementById("mostrarLocalizacao");
+  const resultado = document.getElementById("resultadoLocalizacao");
+
+  botao.addEventListener("click", () => {
+    if (!navigator.geolocation) {
+      resultado.textContent =
+        "Seu navegador não permite acessar a localização.";
+      return;
+    }
+
+    botao.disabled = true;
+    resultado.textContent =
+      "Aguardando a permissão do navegador...";
+
+    navigator.geolocation.getCurrentPosition(
+      (posicao) => {
+        const lat = posicao.coords.latitude;
+        const lon = posicao.coords.longitude;
+
+        resultado.replaceChildren();
+
+        const aviso = document.createElement("p");
+        aviso.textContent =
+          "Localização obtida! Compartilhe o mapa somente se quiser.";
+        resultado.appendChild(aviso);
+
+        const link = document.createElement("a");
+        link.href =
+          "https://www.openstreetmap.org/?mlat=" + lat +
+          "&mlon=" + lon + "#map=16/" + lat + "/" + lon;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "🗺️ Abrir minha localização no mapa";
+        link.style.color = "#ffb347";
+
+        resultado.appendChild(link);
+        botao.disabled = false;
+      },
+      () => {
+        resultado.textContent =
+          "Localização não compartilhada. Você pode continuar no site!";
+        botao.disabled = false;
+      },
+      { enableHighAccuracy: false, timeout: 10000 }
+    );
+  });
+})();
+</script>
 </body>
 </html>
 
