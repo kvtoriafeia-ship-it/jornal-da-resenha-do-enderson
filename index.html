@@ -4,699 +4,242 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jornal da Resenha</title>
+  <title>Barbearia MG | Cardápio</title>
 
   <style>
-    :root {
-      --fundo: #f3f4f8;
-      --cartao: #ffffff;
-      --texto: #202033;
-      --secundario: #66677a;
-      --destaque: #ff8a00;
-      --borda: #e2e3ec;
-    }
-
-    body.escuro {
-      --fundo: #10111b;
-      --cartao: #1b1c2b;
-      --texto: #f5f5ff;
-      --secundario: #c0c1d0;
-      --borda: #343548;
-    }
-
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      margin: 0;
-      background: var(--fundo);
-      color: var(--texto);
-      font-family: Arial, Helvetica, sans-serif;
-      transition: background 0.2s, color 0.2s;
+      font-family: Arial, sans-serif;
+      background: #101010;
+      color: white;
     }
 
     header {
-      background: #171729;
-      color: white;
-      padding: 25px 6%;
-      border-bottom: 4px solid var(--destaque);
-    }
-
-    .topo {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      text-align: center;
+      padding: 35px 15px;
+      background: #080808;
+      border-bottom: 2px solid #c9a227;
     }
 
     .logo {
-      font-size: 30px;
-      font-weight: 900;
-      margin: 0;
+      font-size: 15px;
+      letter-spacing: 5px;
+      color: #c9a227;
     }
 
-    .logo span {
-      color: var(--destaque);
+    header h1 {
+      font-size: 32px;
+      margin: 12px 0;
+      color: #e5c45b;
     }
 
-    .subtitulo {
-      margin: 8px 0 0;
-      color: #d0d0e0;
+    header p {
+      color: #ccc;
     }
 
-    button, input {
-      font: inherit;
+    .banner {
+      text-align: center;
+      padding: 35px 15px;
+      background: linear-gradient(135deg, #191919, #29200c);
     }
 
-    button {
-      cursor: pointer;
+    .banner h2 {
+      color: #e5c45b;
+      font-size: 26px;
+      margin-bottom: 10px;
     }
 
-    .botao-tema {
-      background: var(--destaque);
-      color: #171729;
-      border: none;
-      padding: 11px 15px;
-      border-radius: 8px;
-      font-weight: bold;
+    .banner p {
+      color: #ddd;
+      line-height: 1.6;
     }
 
-    nav {
+    .container {
+      max-width: 750px;
+      margin: auto;
+      padding: 25px 16px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #e5c45b;
+      margin: 15px 0 22px;
+      font-size: 24px;
+    }
+
+    .item {
       display: flex;
-      gap: 10px;
-      padding: 16px 6%;
-      background: var(--cartao);
-      border-bottom: 1px solid var(--borda);
-      flex-wrap: wrap;
-    }
-
-    nav button, .filtro {
-      border: 1px solid var(--borda);
-      background: var(--cartao);
-      color: var(--texto);
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    nav button:hover, .filtro:hover,
-    .filtro.ativo {
-      background: var(--destaque);
-      color: #171729;
-      border-color: var(--destaque);
-    }
-
-    main {
-      width: min(1200px, 90%);
-      margin: 30px auto;
-    }
-
-    .destaque {
-      padding: 30px;
-      border-radius: 16px;
-      color: white;
-      background: linear-gradient(120deg, #262347, #6c286d, #e46c21);
-      margin-bottom: 30px;
-    }
-
-    .destaque h2 {
-      font-size: clamp(26px, 4vw, 42px);
-      margin: 10px 0;
-    }
-
-    .destaque p {
-      line-height: 1.7;
-      max-width: 700px;
-    }
-
-    .busca {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1px solid var(--borda);
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 17px 15px;
+      margin-bottom: 12px;
+      background: #1c1c1c;
+      border: 1px solid #383020;
       border-radius: 10px;
-      background: var(--cartao);
-      color: var(--texto);
-      margin-bottom: 18px;
     }
 
-    .filtros {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 25px;
+    .item h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
     }
 
-    .titulo-secao {
-      margin: 28px 0 18px;
-      font-size: 27px;
+    .item p {
+      font-size: 13px;
+      color: #aaa;
+      line-height: 1.4;
     }
 
-    .grade {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-      padding-bottom: 35px;
+    .price {
+      color: #e5c45b;
+      font-weight: bold;
+      font-size: 19px;
+      white-space: nowrap;
     }
 
-    .noticia {
-      min-width: 0;
-      overflow: hidden;
-      border-radius: 14px;
-      background: var(--cartao);
-      border: 1px solid var(--borda);
-      box-shadow: 0 5px 18px #00000012;
-      transition: transform 0.2s;
+    .tag {
+      display: inline-block;
+      margin-top: 7px;
+      font-size: 10px;
+      color: #111;
+      background: #d8b64c;
+      padding: 4px 7px;
+      border-radius: 4px;
+      font-weight: bold;
     }
 
-    .noticia:hover {
-      transform: translateY(-4px);
+    .info {
+      text-align: center;
+      padding: 25px 15px;
+      background: #191919;
+      margin-top: 20px;
+      border-radius: 10px;
+      line-height: 2;
     }
 
-    .imagem-noticia {
+    .info h2 {
+      color: #e5c45b;
+      margin-bottom: 10px;
+    }
+
+    .whatsapp {
       display: block;
       width: 100%;
-      height: 210px;
-      object-fit: cover;
-      background: #292940;
-    }
-
-    .conteudo-noticia {
-      padding: 18px;
-    }
-
-    .categoria {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--destaque);
-      margin-bottom: 8px;
-    }
-
-    .conteudo-noticia h3 {
-      font-size: 20px;
-      line-height: 1.35;
-      margin: 4px 0 12px;
-    }
-
-    .conteudo-noticia p {
-      color: var(--secundario);
-      line-height: 1.65;
-    }
-
-    .data {
-      display: block;
-      font-size: 12px;
-      color: var(--secundario);
-      margin-top: 14px;
-    }
-
-    .link-noticia {
-      display: inline-block;
-      margin-top: 12px;
-      color: var(--destaque);
-      font-weight: bold;
+      margin-top: 22px;
+      padding: 16px;
+      text-align: center;
+      background: #c9a227;
+      color: #111;
       text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
     }
 
-    .link-noticia:hover {
-      text-decoration: underline;
-    }
-
-    .sobre {
-      background: var(--cartao);
-      border: 1px solid var(--borda);
-      padding: 25px;
-      border-radius: 14px;
-      margin-bottom: 35px;
-      line-height: 1.8;
-    }
-
-    #mensagemVazia {
-      color: var(--secundario);
-      padding: 20px 0;
+    .whatsapp:hover {
+      background: #efd16c;
     }
 
     footer {
       text-align: center;
-      padding: 25px;
-      background: #171729;
-      color: #eeeeff;
-      line-height: 1.8;
-    }
-
-    @media (max-width: 900px) {
-      .grade {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 600px) {
-      .grade {
-        grid-template-columns: 1fr;
-      }
-
-      .logo {
-        font-size: 25px;
-      }
-
-      .destaque {
-        padding: 22px;
-      }
-
-      .imagem-noticia {
-        height: 220px;
-      }
+      padding: 22px 12px;
+      color: #888;
+      font-size: 12px;
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="topo">
-      <div>
-        <h1 class="logo">📰 Jornal da <span>Resenha</span></h1>
-        <p class="subtitulo">Notícias, cultura geek e muita resenha!</p>
-      </div>
 
-      <button class="botao-tema" id="botaoTema">
-        🌙 Modo escuro
-      </button>
-    </div>
+  <header>
+    <div class="logo">✂ ESTILO & TRADIÇÃO ✂</div>
+    <h1>BARBEARIA MG</h1>
+    <p>Seu estilo começa aqui.</p>
   </header>
 
-  <nav aria-label="Navegação principal">
-    <button data-filtro="todos">🏠 Início</button>
-    <button data-filtro="animes">🎌 Animes</button>
-    <button data-filtro="tecnologia">💻 Tecnologia</button>
-    <button data-filtro="games">🎮 Games</button>
-    <button data-filtro="filmes">🎬 Filmes e séries</button>
-    <button data-filtro="sobre">ℹ️ Sobre</button>
-  </nav>
-
-  <main>
-    <section class="destaque">
-      <span>🔥 BEM-VINDO AO PORTAL</span>
-      <h2>O mundo inteiro cabe na resenha!</h2>
-      <p>
-        Fique por dentro das novidades de animes, tecnologia,
-        games, filmes e séries. Escolha uma categoria e confira
-        as matérias do Jornal da Resenha.
-      </p>
-    </section>
-
-    <input
-      class="busca"
-      id="busca"
-      type="search"
-      placeholder="🔎 Pesquisar notícias..."
-      aria-label="Pesquisar notícias"
-    >
-
-    <div class="filtros" aria-label="Filtrar notícias">
-      <button class="filtro ativo" data-filtro="todos">Todas</button>
-      <button class="filtro" data-filtro="animes">🎌 Animes</button>
-      <button class="filtro" data-filtro="tecnologia">💻 Tecnologia</button>
-      <button class="filtro" data-filtro="games">🎮 Games</button>
-      <button class="filtro" data-filtro="filmes">🎬 Filmes e séries</button>
-    </div>
-
-    <h2 class="titulo-secao" id="tituloSecao">📰 Últimas notícias</h2>
-
-    <div class="grade" id="gradeNoticias">
-
-      <!-- NOTÍCIA 1: ANIMES -->
-      <article class="noticia" data-categoria="animes">
-        <img
-          class="imagem-noticia"
-          src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80"
-          alt="Ilustração inspirada no universo dos animes"
-          loading="lazy"
-        >
-        <div class="conteudo-noticia">
-          <span class="categoria">ANIMES • TEMPORADA</span>
-          <h3>Black Clover: novidades da segunda temporada</h3>
-          <p>
-            A programação de outono de 2026 inclui a nova temporada
-            de Black Clover. Confira as informações publicadas
-            sobre os lançamentos.
-          </p>
-          <a class="link-noticia"
-             href="https://www.crunchyroll.com/news/seasonal-lineup/2026/9/15/fall-anime-2026-crunchyroll"
-             target="_blank" rel="noopener noreferrer">
-            Ver programação →
-          </a>
-          <span class="data">Temporada de outubro de 2026</span>
-        </div>
-      </article>
-
-      <!-- NOTÍCIA 2: ANIMES -->
-      <article class="noticia" data-categoria="animes">
-        <img
-          class="imagem-noticia"
-          src="https://images.unsplash.com/photo-1601850494422-3cf14624b0b3?auto=format&fit=crop&w=900&q=80"
-          alt="Arte ilustrativa para notícia de anime"
-          loading="lazy"
-        >
-        <div class="conteudo-noticia">
-          <span class="categoria">ANIMES • NOVIDADE</span>
-          <h3>Diários de uma Apotecária: nova temporada</h3>
-          <p>
-            Maomao está entre os destaques da programação de animes
-            de outubro de 2026. Consulte a programação oficial
-            para acompanhar as novidades.
-          </p>
-          <a class="link-noticia"
-             href="https://www.crunchyroll.com/news/seasonal-lineup/2026/9/15/fall-anime-2026-crunchyroll"
-             target="_blank" rel="noopener noreferrer">
-            Ver programação →
-          </a>
-          <span class="data">Temporada de outubro de 2026</span>
-        </div>
-      </article>
-
-      <!-- NOTÍCIA 3: ANIMES -->
-      <article class="noticia" data-categoria="animes">
-        <img
-          class="imagem-noticia"
-          src="https://images.unsplash.com/photo-1560972550-aba3456b5564?auto=format&fit=crop&w=900&q=80"
-          alt="Imagem ilustrativa de animação japonesa"
-          loading="lazy"
-        >
-        <div class="conteudo-noticia">
-          <span class="categoria">ANIMES • ESTREIAS</span>
-          <h3>Firefly Wedding entre as novidades anunciadas</h3>
-          <p>
-            A programação de outono traz novidades para quem
-            gosta de descobrir histórias diferentes. Veja a
-            lista oficial de títulos e lançamentos.
-          </p>
-          <a class="link-noticia"
-             href="https://www.crunchyroll.com/news/seasonal-lineup/2026/9/15/fall-anime-2026-crunchyroll"
-             target="_blank" rel="noopener noreferrer">
-            Ver programação →
-          </a>
-          <span class="data">Temporada de outubro de 2026</span>
-        </div>
-      </article>
-
-      <!-- NOTÍCIA 4: TECNOLOGIA -->
-      <article class="noticia" data-categoria="tecnologia">
-        <img
-          class="imagem-noticia"
-          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
-          alt="Pessoas trabalhando com computadores"
-          loading="lazy"
-        >
-        <div class="conteudo-noticia">
-          <span class="categoria">TECNOLOGIA</span>
-          <h3>Como a inteligência artificial está mudando a tecnologia</h3>
-          <p>
-            Conheça algumas aplicações da inteligência artificial
-            e entenda como essa tecnologia está presente em
-            ferramentas usadas no dia a dia.
-          </p>
-          <a class="link-noticia"
-             href="https://www.technologyreview.com/"
-             target="_blank" rel="noopener noreferrer">
-            Ler mais →
-          </a>
-          <span class="data">Matéria informativa</span>
-        </div>
-      </article>
-
-      <!-- NOTÍCIA 5: GAMES -->
-      <article class="noticia" data-categoria="games">
-        <img
-          class="imagem-noticia"
-          src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80"
-          alt="Equipamentos para jogos eletrônicos"
-          loading="lazy"
-        >
-        <div class="conteudo-noticia">
-          <span class="categoria">GAMES</span>
-          <h3>O universo dos games continua evoluindo</h3>
-          <p>
-            Dos jogos independentes aos grandes lançamentos,
-            descubra novidades, tendências e curiosidades
-            do mundo dos videogames.
-          </p>
-          <a class="link-noticia"
-             href="https://www.ign.com/"
-             target="_blank" rel="noopener noreferrer">
-            Ler mais →
-          </a>
-          <span class="data">Matéria informativa</span>
-        </div>
-      </article>
-
-      <!-- NOTÍCIA 6: FILMES E SÉRIES -->
-      <article class="noticia" data-categoria="filmes">
-        <img
-          class="imagem-noticia"
-          src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80"
-          alt="Sala de cinema"
-          loading="lazy"
-        >
-        <div class="conteudo-noticia">
-          <span class="categoria">FILMES E SÉRIES</span>
-          <h3>O que assistir na próxima maratona?</h3>
-          <p>
-            Separe a pipoca e descubra filmes, séries e histórias
-            para colocar na sua lista de próximas sessões.
-          </p>
-          <a class="link-noticia"
-             href="https://www.imdb.com/"
-             target="_blank" rel="noopener noreferrer">
-            Descobrir títulos →
-          </a>
-          <span class="data">Dicas para sua próxima sessão</span>
-        </div>
-      </article>
-
-    </div>
-
-    <p id="mensagemVazia" hidden>
-      Nenhuma notícia encontrada. Tente outra pesquisa!
+  <section class="banner">
+    <h2>NOSSO CARDÁPIO</h2>
+    <p>
+      Confira nossos serviços e preços.<br>
+      Qualidade, estilo e atendimento de primeira!
     </p>
+  </section>
 
-    <section class="sobre" id="sobre">
-      <h2>ℹ️ Sobre o Jornal da Resenha</h2>
-      <p>
-        O Jornal da Resenha é um portal de entretenimento com
-        notícias, curiosidades e conteúdos sobre animes,
-        tecnologia, games, filmes e séries criado pelo dev enderson
-      </p>
-      <p>
-        As matérias são exemplos que podem ser editados.
-        Consulte os links das fontes para ler informações
-        adicionais e conferir as notícias originais.
-      </p>
-    </section>
+  <main class="container">
+    <h2 class="section-title">💈 Cortes e Serviços</h2>
+
+    <div class="item">
+      <div>
+        <h3>Corte tradicional</h3>
+        <p>Corte clássico na tesoura ou máquina.</p>
+      </div>
+      <div class="price">R$ 30</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>Degradê / Fade</h3>
+        <p>Acabamento moderno e personalizado.</p>
+        <span class="tag">MAIS PEDIDO</span>
+      </div>
+      <div class="price">R$ 35</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>Corte + Barba</h3>
+        <p>Visual completo com acabamento.</p>
+      </div>
+      <div class="price">R$ 50</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>Barba</h3>
+        <p>Modelagem e acabamento da barba.</p>
+      </div>
+      <div class="price">R$ 20</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>Corte infantil</h3>
+        <p>Corte para os pequenos.</p>
+      </div>
+      <div class="price">R$ 25</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>Pezinho</h3>
+        <p>Acabamento da nuca e laterais.</p>
+      </div>
+      <div class="price">R$ 10</div>
+    </div>
+
+    <div class="info">
+      <h2>📍 Informações</h2>
+      <p>📅 Segunda a sábado</p>
+      <p>🕒 09h às 19h</p>
+      <p>📍 Minas Gerais - MG</p>
+    </div>
+
+    <a class="whatsapp"
+       href="https://wa.me/5531999999999"
+       target="_blank"
+       rel="noopener">
+      📲 AGENDAR PELO WHATSAPP
+    </a>
   </main>
 
   <footer>
-    <strong>📰 Jornal da Resenha</strong>
-    <p>Informação, entretenimento e resenha em um só lugar.</p>
-    <small>© 2026 Jornal da Resenha</small>
+    © 2026 Barbearia MG — Todos os direitos reservados.
+    <p>Estilo, qualidade e tradição.</p>
   </footer>
 
-  <script>
-    const botaoTema = document.getElementById("botaoTema");
-    const busca = document.getElementById("busca");
-    const noticias = [...document.querySelectorAll(".noticia")];
-    const botoesFiltro = document.querySelectorAll("[data-filtro]");
-    const tituloSecao = document.getElementById("tituloSecao");
-    const mensagemVazia = document.getElementById("mensagemVazia");
-
-    let categoriaAtual = "todos";
-
-    // Restaurar tema escolhido
-    try {
-      if (localStorage.getItem("temaJornal") === "escuro") {
-        document.body.classList.add("escuro");
-      }
-    } catch (erro) {
-      // O site continua funcionando mesmo sem armazenamento.
-    }
-
-    atualizarBotaoTema();
-
-    botaoTema.addEventListener("click", () => {
-      document.body.classList.toggle("escuro");
-
-      try {
-        localStorage.setItem(
-          "temaJornal",
-          document.body.classList.contains("escuro") ? "escuro" : "claro"
-        );
-      } catch (erro) {
-        // O tema funciona até a página ser recarregada.
-      }
-
-      atualizarBotaoTema();
-    });
-
-    function atualizarBotaoTema() {
-      const escuro = document.body.classList.contains("escuro");
-      botaoTema.textContent = escuro ? "☀️ Modo claro" : "🌙 Modo escuro";
-    }
-
-    const nomesCategorias = {
-      todos: "📰 Últimas notícias",
-      animes: "🎌 Notícias de animes",
-      tecnologia: "💻 Notícias de tecnologia",
-      games: "🎮 Notícias de games",
-      filmes: "🎬 Filmes e séries"
-    };
-
-    function filtrarNoticias() {
-      const termo = busca.value.trim().toLocaleLowerCase("pt-BR");
-      let quantidadeVisivel = 0;
-
-      noticias.forEach((noticia) => {
-        const categoria = noticia.dataset.categoria;
-        const texto = noticia.textContent.toLocaleLowerCase("pt-BR");
-        const categoriaCorreta =
-          categoriaAtual === "todos" || categoria === categoriaAtual;
-        const textoCorreto = texto.includes(termo);
-        const mostrar = categoriaCorreta && textoCorreto;
-
-        noticia.hidden = !mostrar;
-
-        if (mostrar) quantidadeVisivel++;
-      });
-
-      mensagemVazia.hidden = quantidadeVisivel > 0;
-    }
-
-    function selecionarCategoria(categoria) {
-      if (categoria === "sobre") {
-        document.getElementById("sobre").scrollIntoView({
-          behavior: "smooth"
-        });
-        return;
-      }
-
-      categoriaAtual = categoria;
-
-      tituloSecao.textContent =
-        nomesCategorias[categoria] || nomesCategorias.todos;
-
-      document.querySelectorAll(".filtro").forEach((botao) => {
-        botao.classList.toggle(
-          "ativo",
-          botao.dataset.filtro === categoria
-        );
-      });
-
-      filtrarNoticias();
-
-      document.getElementById("gradeNoticias").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-
-    botoesFiltro.forEach((botao) => {
-      botao.addEventListener("click", () => {
-        selecionarCategoria(botao.dataset.filtro);
-      });
-    });
-
-    busca.addEventListener("input", filtrarNoticias);
-  </script>
-  
-<section id="localizacao-brincadeira" style="
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 24px;
-  background: #1b1c2b;
-  color: white;
-  border-radius: 16px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-">
-  <h2>🕵️ Desafio dos amigos</h2>
-  <p>
-    Quer participar? Clique para compartilhar sua localização.
-    Você decide se autoriza ou não.
-  </p>
-
-  <button id="mostrarLocalizacao" style="
-    background: #ff8a00;
-    color: #171729;
-    border: 0;
-    border-radius: 8px;
-    padding: 13px 18px;
-    font-weight: bold;
-    cursor: pointer;
-  ">
-    📍 Mostrar minha localização
-  </button>
-
-  <p id="resultadoLocalizacao" aria-live="polite"></p>
-</section>
-
-<script>
-(() => {
-  const botao = document.getElementById("mostrarLocalizacao");
-  const resultado = document.getElementById("resultadoLocalizacao");
-
-  botao.addEventListener("click", () => {
-    if (!navigator.geolocation) {
-      resultado.textContent =
-        "Seu navegador não permite acessar a localização.";
-      return;
-    }
-
-    botao.disabled = true;
-    resultado.textContent =
-      "Aguardando a permissão do navegador...";
-
-    navigator.geolocation.getCurrentPosition(
-      (posicao) => {
-        const lat = posicao.coords.latitude;
-        const lon = posicao.coords.longitude;
-
-        resultado.replaceChildren();
-
-        const aviso = document.createElement("p");
-        aviso.textContent =
-          "Localização obtida! Compartilhe o mapa somente se quiser.";
-        resultado.appendChild(aviso);
-
-        const link = document.createElement("a");
-        link.href =
-          "https://www.openstreetmap.org/?mlat=" + lat +
-          "&mlon=" + lon + "#map=16/" + lat + "/" + lon;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.textContent = "🗺️ Abrir minha localização no mapa";
-        link.style.color = "#ffb347";
-
-        resultado.appendChild(link);
-        botao.disabled = false;
-      },
-      () => {
-        resultado.textContent =
-          "Localização não compartilhada. Você pode continuar no site!";
-        botao.disabled = false;
-      },
-      { enableHighAccuracy: false, timeout: 10000 }
-    );
-  });
-})();
-</script>
 </body>
 </html>
-
-
-
-
