@@ -1,522 +1,245 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbearia MG | Cardápio</title>
 
-<title>Barbearia MG | Premium</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background: #101010;
+      color: white;
+    }
 
-:root {
-  --gold: #d4af37;
-  --gold-light: #f5d76e;
-  --black: #090909;
-  --card: #171717;
-}
+    header {
+      text-align: center;
+      padding: 35px 15px;
+      background: #080808;
+      border-bottom: 2px solid #c9a227;
+    }
 
-html {
-  scroll-behavior: smooth;
-}
+    .logo {
+      font-size: 15px;
+      letter-spacing: 5px;
+      color: #c9a227;
+    }
 
-body {
-  background: var(--black);
-  color: white;
-  font-family: Arial, sans-serif;
-}
+    header h1 {
+      font-size: 32px;
+      margin: 12px 0;
+      color: #e5c45b;
+    }
 
-header {
-  text-align: center;
-  padding: 35px 15px;
-  background: #050505;
-  border-bottom: 2px solid var(--gold);
-}
+    header p {
+      color: #ccc;
+    }
 
-.logo {
-  color: var(--gold);
-  letter-spacing: 4px;
-  font-size: 13px;
-}
+    .banner {
+      text-align: center;
+      padding: 35px 15px;
+      background: linear-gradient(135deg, #191919, #29200c);
+    }
 
-header h1 {
-  color: var(--gold-light);
-  font-size: 36px;
-  margin: 13px 0;
-}
+    .banner h2 {
+      color: #e5c45b;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
 
-header p {
-  color: #ccc;
-}
+    .banner p {
+      color: #ddd;
+      line-height: 1.6;
+    }
 
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 15px;
-  background: #111;
-  border-bottom: 1px solid #463a18;
-}
+    .container {
+      max-width: 750px;
+      margin: auto;
+      padding: 25px 16px;
+    }
 
-nav a {
-  color: var(--gold);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: bold;
-}
+    .section-title {
+      text-align: center;
+      color: #e5c45b;
+      margin: 15px 0 22px;
+      font-size: 24px;
+    }
 
-nav a:hover {
-  color: white;
-}
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 17px 15px;
+      margin-bottom: 12px;
+      background: #1c1c1c;
+      border: 1px solid #383020;
+      border-radius: 10px;
+    }
 
-.banner {
-  text-align: center;
-  padding: 65px 18px;
-  background:
-    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.88)),
-    url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1400&q=85")
-    center/cover;
-}
+    .item h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
 
-.banner h2 {
-  color: var(--gold-light);
-  font-size: 30px;
-  margin-bottom: 15px;
-}
+    .item p {
+      font-size: 13px;
+      color: #aaa;
+      line-height: 1.4;
+    }
 
-.banner p {
-  line-height: 1.8;
-  color: #eee;
-}
+    .price {
+      color: #e5c45b;
+      font-weight: bold;
+      font-size: 19px;
+      white-space: nowrap;
+    }
 
-.container {
-  max-width: 1100px;
-  padding: 25px 16px;
-  margin: auto;
-}
+    .tag {
+      display: inline-block;
+      margin-top: 7px;
+      font-size: 10px;
+      color: #111;
+      background: #d8b64c;
+      padding: 4px 7px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
 
-.section-title {
-  color: var(--gold-light);
-  text-align: center;
-  font-size: 25px;
-  margin: 35px 0 22px;
-}
+    .info {
+      text-align: center;
+      padding: 25px 15px;
+      background: #191919;
+      margin-top: 20px;
+      border-radius: 10px;
+      line-height: 2;
+    }
 
-.intro {
-  text-align: center;
-  color: #bbb;
-  line-height: 1.7;
-  margin-bottom: 25px;
-}
+    .info h2 {
+      color: #e5c45b;
+      margin-bottom: 10px;
+    }
 
-/* GALERIA DOS CORTES */
+    .whatsapp {
+      display: block;
+      width: 100%;
+      margin-top: 22px;
+      padding: 16px;
+      text-align: center;
+      background: #c9a227;
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+    }
 
-.cortes {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
+    .whatsapp:hover {
+      background: #efd16c;
+    }
 
-.corte {
-  background: var(--card);
-  border: 1px solid #51421b;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: .25s;
-}
-
-.corte:hover {
-  border-color: var(--gold);
-  transform: translateY(-4px);
-}
-
-.corte img {
-  display: block;
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  background: #222;
-}
-
-.corte-info {
-  padding: 15px;
-}
-
-.corte h3 {
-  color: var(--gold-light);
-  font-size: 17px;
-  margin-bottom: 8px;
-}
-
-.corte p {
-  color: #bbb;
-  font-size: 13px;
-  line-height: 1.6;
-  min-height: 42px;
-}
-
-.preco {
-  color: var(--gold-light);
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 12px;
-}
-
-.tag {
-  display: inline-block;
-  margin-top: 9px;
-  background: var(--gold);
-  color: #111;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 5px 7px;
-  border-radius: 4px;
-}
-
-/* INFORMAÇÕES */
-
-.info {
-  margin-top: 35px;
-  padding: 25px 15px;
-  background: #151515;
-  border: 1px solid #51421b;
-  border-radius: 12px;
-  text-align: center;
-  line-height: 2;
-}
-
-.info h2 {
-  color: var(--gold-light);
-  margin-bottom: 10px;
-}
-
-.whatsapp {
-  display: block;
-  margin-top: 20px;
-  padding: 17px;
-  background: var(--gold);
-  color: #111;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: .2s;
-}
-
-.whatsapp:hover {
-  background: var(--gold-light);
-}
-
-/* BÍBLIA */
-
-.biblia {
-  margin-top: 45px;
-  padding: 25px 16px;
-  background: #141414;
-  border: 1px solid #51421b;
-  border-radius: 12px;
-}
-
-.biblia h2 {
-  text-align: center;
-  color: var(--gold-light);
-  margin-bottom: 12px;
-}
-
-.biblia-intro {
-  text-align: center;
-  color: #ccc;
-  line-height: 1.7;
-  margin-bottom: 25px;
-}
-
-.versiculo {
-  background: #0b0b0b;
-  border-left: 3px solid var(--gold);
-  padding: 15px;
-  margin-bottom: 12px;
-  border-radius: 4px;
-}
-
-.versiculo h3 {
-  color: var(--gold-light);
-  font-size: 14px;
-  margin-bottom: 7px;
-}
-
-.versiculo p {
-  color: #ddd;
-  line-height: 1.7;
-  font-size: 14px;
-}
-
-footer {
-  text-align: center;
-  padding: 25px 12px;
-  margin-top: 20px;
-  border-top: 1px solid #463a18;
-  color: #999;
-  font-size: 12px;
-  line-height: 2;
-}
-
-/* CELULAR E TABLET */
-
-@media (max-width: 750px) {
-  .cortes {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .corte img {
-    height: 175px;
-  }
-
-  .corte-info {
-    padding: 12px;
-  }
-
-  .corte h3 {
-    font-size: 15px;
-  }
-
-  .preco {
-    font-size: 17px;
-  }
-}
-
-@media (max-width: 390px) {
-  .cortes {
-    grid-template-columns: 1fr;
-  }
-
-  .corte img {
-    height: 230px;
-  }
-
-  header h1 {
-    font-size: 29px;
-  }
-
-  .banner h2 {
-    font-size: 24px;
-  }
-}
-</style>
+    footer {
+      text-align: center;
+      padding: 22px 12px;
+      color: #888;
+      font-size: 12px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">✂ ESTILO & TRADIÇÃO ✂</div>
-  <h1>BARBEARIA MG</h1>
-  <p>Seu estilo começa aqui.</p>
-</header>
+  <header>
+    <div class="logo">✂ ESTILO & TRADIÇÃO ✂</div>
+    <h1>BARBEARIA MG</h1>
+    <p>Seu estilo começa aqui.</p>
+  </header>
 
-<nav>
-  <a href="#cortes">CORTES</a>
-  <a href="#informacoes">HORÁRIOS</a>
-  <a href="#biblia">PALAVRA DE DEUS</a>
-</nav>
+  <section class="banner">
+    <h2>NOSSO CARDÁPIO</h2>
+    <p>
+      Confira nossos serviços e preços.<br>
+      Qualidade, estilo e atendimento de primeira!
+    </p>
+  </section>
 
-<section class="banner">
-  <h2>CORTES & ESTILOS PREMIUM</h2>
-  <p>
-    Do clássico ao cria!<br>
-    Cortes modernos, reflexo, nevou e muito mais.<br>
-    Qualidade, estilo e tradição.
-  </p>
-</section>
+  <main class="container">
+    <h2 class="section-title">💈 Cortes e Serviços</h2>
 
-<main class="container">
-
-  <h2 class="section-title" id="cortes">
-    💈 Nosso Cardápio
-  </h2>
-
-  <p class="intro">
-    Escolha seu próximo visual e confira nossos serviços.<br>
-    Cada estilo, uma identidade!
-  </p>
-
-  <section class="cortes">
-
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
-           alt="Corte inspirado no Oruam com cabelo vermelho" loading="lazy">
-      <div class="corte-info">
-        <h3>Corte do Oruam Vermelho</h3>
-        <p>Cabelo vermelho inspirado no visual do rapper, com corte e acabamento personalizado.</p>
-        <span class="tag">DESTAQUE</span>
-        <div class="preco">R$ 100</div>
+    <div class="item">
+      <div>
+        <h3>Corte tradicional</h3>
+        <p>Corte clássico na tesoura ou máquina.</p>
       </div>
-    </article>
+      <div class="price">R$ 30</div>
+    </div>
 
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80"
-           alt="Corte do Jaca" loading="lazy">
-      <div class="corte-info">
-        <h3>Corte do Jaca</h3>
-        <p>Estilo inspirado nos cortes populares das comunidades cariocas.</p>
-        <div class="preco">R$ 35</div>
+    <div class="item">
+      <div>
+        <h3>Degradê / Fade</h3>
+        <p>Acabamento moderno e personalizado.</p>
+        <span class="tag">MAIS PEDIDO</span>
       </div>
-    </article>
+      <div class="price">R$ 35</div>
+    </div>
 
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"
-           alt="Cabelo nevou" loading="lazy">
-      <div class="corte-info">
-        <h3>❄️ Nevou</h3>
-        <p>Descoloração para um visual bem claro e marcante.</p>
-        <div class="preco">R$ 80</div>
+    <div class="item">
+      <div>
+        <h3>Corte + Barba</h3>
+        <p>Visual completo com acabamento.</p>
       </div>
-    </article>
+      <div class="price">R$ 50</div>
+    </div>
 
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"
-           alt="Cabelo com reflexos" loading="lazy">
-      <div class="corte-info">
-        <h3>Reflexo</h3>
-        <p>Mechas claras para destacar o cabelo.</p>
-        <div class="preco">R$ 60</div>
+    <div class="item">
+      <div>
+        <h3>Barba</h3>
+        <p>Modelagem e acabamento da barba.</p>
       </div>
-    </article>
+      <div class="price">R$ 20</div>
+    </div>
 
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
-           alt="Reflexo alinhado" loading="lazy">
-      <div class="corte-info">
-        <h3>Reflexo Alinhado</h3>
-        <p>Reflexos com acabamento definido e corte alinhado.</p>
-        <div class="preco">R$ 70</div>
+    <div class="item">
+      <div>
+        <h3>Corte infantil</h3>
+        <p>Corte para os pequenos.</p>
       </div>
-    </article>
+      <div class="price">R$ 25</div>
+    </div>
 
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80"
-           alt="Cabelo platinado" loading="lazy">
-      <div class="corte-info">
-        <h3>Platinado</h3>
-        <p>Coloração em tom bem claro para transformar o visual.</p>
-        <div class="preco">R$ 90</div>
+    <div class="item">
+      <div>
+        <h3>Pezinho</h3>
+        <p>Acabamento da nuca e laterais.</p>
       </div>
-    </article>
+      <div class="price">R$ 10</div>
+    </div>
 
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"
-           alt="Luzes masculinas" loading="lazy">
-      <div class="corte-info">
-        <h3>Luzes Masculinas</h3>
-        <p>Mechas para iluminar e destacar o cabelo.</p>
-        <div class="preco">R$ 70</div>
-      </div>
-    </article>
+    <div class="info">
+      <h2>📍 Informações</h2>
+      <p>📅 Segunda a sábado</p>
+      <p>🕒 09h às 19h</p>
+      <p>📍 Minas Gerais - MG</p>
+    </div>
 
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"
-           alt="Corte americano" loading="lazy">
-      <div class="corte-info">
-        <h3>Corte Americano</h3>
-        <p>Laterais alinhadas com acabamento moderno.</p>
-        <div class="preco">R$ 35</div>
-      </div>
-    </article>
+    <a class="whatsapp"
+       href="https://wa.me/5531999999999"
+       target="_blank"
+       rel="noopener">
+      📲 AGENDAR PELO WHATSAPP
+    </a>
+  </main>
 
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
-           alt="Low fade" loading="lazy">
-      <div class="corte-info">
-        <h3>Low Fade</h3>
-        <p>Degradê baixo, discreto e elegante.</p>
-        <div class="preco">R$ 35</div>
-      </div>
-    </article>
+  <footer>
+    © 2026 Barbearia MG — Todos os direitos reservados.
+    <p>Estilo, qualidade e tradição.</p>
+  </footer>
 
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80"
-           alt="Mid fade" loading="lazy">
-      <div class="corte-info">
-        <h3>Mid Fade</h3>
-        <p>Degradê médio com transição suave.</p>
-        <div class="preco">R$ 35</div>
-      </div>
-    </article>
-
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"
-           alt="High fade" loading="lazy">
-      <div class="corte-info">
-        <h3>High Fade</h3>
-        <p>Degradê alto para um visual marcante.</p>
-        <div class="preco">R$ 35</div>
-      </div>
-    </article>
-
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"
-           alt="Taper fade" loading="lazy">
-      <div class="corte-info">
-        <h3>Taper Fade</h3>
-        <p>Acabamento gradual nas costeletas e na nuca.</p>
-        <div class="preco">R$ 35</div>
-      </div>
-    </article>
-
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
-           alt="Corte mullet" loading="lazy">
-      <div class="corte-info">
-        <h3>Mullet</h3>
-        <p>Laterais curtas e comprimento maior atrás.</p>
-        <div class="preco">R$ 40</div>
-      </div>
-    </article>
-
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80"
-           alt="Corte moicano" loading="lazy">
-      <div class="corte-info">
-        <h3>Moicano</h3>
-        <p>Laterais baixas com destaque no centro.</p>
-        <div class="preco">R$ 35</div>
-      </div>
-    </article>
-
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"
-           alt="Corte com risco" loading="lazy">
-      <div class="corte-info">
-        <h3>Corte com Risco</h3>
-        <p>Desenho personalizado para completar o estilo.</p>
-        <div class="preco">R$ 40</div>
-      </div>
-    </article>
-
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"
-           alt="Corte nudred" loading="lazy">
-      <div class="corte-info">
-        <h3>Nudred</h3>
-        <p>Textura com pequenos cachos e laterais alinhadas.</p>
-        <div class="preco">R$ 40</div>
-      </div>
-    </article>
-
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
-           alt="Corte na tesoura" loading="lazy">
-      <div class="corte-info">
-        <h3>Corte na Tesoura</h3>
-        <p>Corte personalizado com acabamento clássico.</p>
-        <div class="preco">R$ 35</div>
-      </div>
-    </article>
-
-    <article class="corte">
-      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=
+</body>
+</html>
