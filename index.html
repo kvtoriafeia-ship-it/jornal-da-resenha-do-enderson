@@ -1,16 +1,23 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barbearia MG | Cardápio</title>
+
+  <title>Barbearia MG | Estilo & Tradição</title>
+
+  <meta name="description" content="Barbearia MG. Cortes, degradê, barba e atendimento de qualidade. Agende seu horário pelo WhatsApp.">
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -27,13 +34,13 @@
     }
 
     .logo {
-      font-size: 15px;
+      font-size: 14px;
       letter-spacing: 5px;
       color: #c9a227;
     }
 
     header h1 {
-      font-size: 32px;
+      font-size: 34px;
       margin: 12px 0;
       color: #e5c45b;
     }
@@ -44,23 +51,26 @@
 
     .banner {
       text-align: center;
-      padding: 35px 15px;
-      background: linear-gradient(135deg, #191919, #29200c);
+      padding: 55px 18px;
+      background:
+        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.85)),
+        url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1400&q=85")
+        center/cover;
     }
 
     .banner h2 {
       color: #e5c45b;
-      font-size: 26px;
-      margin-bottom: 10px;
+      font-size: 29px;
+      margin-bottom: 12px;
     }
 
     .banner p {
-      color: #ddd;
-      line-height: 1.6;
+      color: #eee;
+      line-height: 1.8;
     }
 
     .container {
-      max-width: 750px;
+      max-width: 850px;
       margin: auto;
       padding: 25px 16px;
     }
@@ -68,9 +78,47 @@
     .section-title {
       text-align: center;
       color: #e5c45b;
-      margin: 15px 0 22px;
-      font-size: 24px;
+      margin: 25px 0;
+      font-size: 25px;
     }
+
+    /* GALERIA DE FOTOS */
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 35px;
+    }
+
+    .foto {
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid #6b5720;
+      background: #1c1c1c;
+    }
+
+    .foto img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      transition: transform .35s;
+    }
+
+    .foto:hover img {
+      transform: scale(1.05);
+    }
+
+    .foto p {
+      padding: 12px;
+      color: #e5c45b;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* SERVIÇOS */
 
     .item {
       display: flex;
@@ -92,7 +140,7 @@
     .item p {
       font-size: 13px;
       color: #aaa;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .price {
@@ -113,11 +161,14 @@
       font-weight: bold;
     }
 
+    /* INFORMAÇÕES */
+
     .info {
       text-align: center;
       padding: 25px 15px;
       background: #191919;
-      margin-top: 20px;
+      margin-top: 30px;
+      border: 1px solid #383020;
       border-radius: 10px;
       line-height: 2;
     }
@@ -138,17 +189,88 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
+      transition: .3s;
     }
 
     .whatsapp:hover {
       background: #efd16c;
+      transform: translateY(-2px);
+    }
+
+    /* VERSÍCULOS BÍBLICOS */
+
+    .biblia {
+      margin-top: 45px;
+      padding: 28px 18px;
+      background: linear-gradient(145deg, #191919, #211b0d);
+      border: 1px solid #806722;
+      border-radius: 14px;
+    }
+
+    .biblia h2 {
+      color: #e5c45b;
+      text-align: center;
+      margin-bottom: 12px;
+      font-size: 25px;
+    }
+
+    .biblia-intro {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .versiculo {
+      padding: 16px 12px;
+      margin-bottom: 12px;
+      background: rgba(0,0,0,.3);
+      border-left: 3px solid #c9a227;
+      border-radius: 5px;
+    }
+
+    .versiculo p {
+      color: #eee;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .versiculo h3 {
+      color: #e5c45b;
+      font-size: 14px;
+      margin-bottom: 7px;
     }
 
     footer {
       text-align: center;
-      padding: 22px 12px;
+      padding: 25px 12px;
       color: #888;
       font-size: 12px;
+      line-height: 2;
+      margin-top: 15px;
+      border-top: 1px solid #302819;
+    }
+
+    @media (max-width: 420px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      .banner h2 {
+        font-size: 24px;
+      }
+
+      .foto img {
+        height: 145px;
+      }
+
+      .item h3 {
+        font-size: 15px;
+      }
+
+      .price {
+        font-size: 17px;
+      }
     }
   </style>
 </head>
@@ -170,6 +292,49 @@
   </section>
 
   <main class="container">
+
+    <!-- GALERIA DE FOTOS -->
+
+    <h2 class="section-title">📸 Nosso Estilo</h2>
+
+    <section class="galeria">
+
+      <div class="foto">
+        <img
+          src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"
+          alt="Ambiente de barbearia"
+          loading="lazy">
+        <p>Nosso Ambiente</p>
+      </div>
+
+      <div class="foto">
+        <img
+          src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
+          alt="Barbeiro trabalhando em um corte"
+          loading="lazy">
+        <p>Cortes Modernos</p>
+      </div>
+
+      <div class="foto">
+        <img
+          src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80"
+          alt="Ferramentas e trabalho de barbeiro"
+          loading="lazy">
+        <p>Estilo e Precisão</p>
+      </div>
+
+      <div class="foto">
+        <img
+          src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"
+          alt="Corte masculino em barbearia"
+          loading="lazy">
+        <p>Visual Renovado</p>
+      </div>
+
+    </section>
+
+    <!-- CARDÁPIO -->
+
     <h2 class="section-title">💈 Cortes e Serviços</h2>
 
     <div class="item">
@@ -221,26 +386,82 @@
       <div class="price">R$ 10</div>
     </div>
 
-    <div class="info">
+    <!-- INFORMAÇÕES -->
+
+    <section class="info">
       <h2>📍 Informações</h2>
       <p>📅 Segunda a sábado</p>
       <p>🕒 14h às 21h</p>
-      <p>📍 rio de janeiro - MG</p>
-    </div>
+      <p>📍 Rio de Janeiro - MG</p>
+    </section>
 
-    <a class="whatsapp"
-       href="https://wa.me/5531999999999"
-       target="_blank"
-       rel="noopener">
+    <a
+      class="whatsapp"
+      href="https://wa.me/5531999999999"
+      target="_blank"
+      rel="noopener noreferrer">
       📲 AGENDAR PELO WHATSAPP
-         
     </a>
-  </main>
 
-  <footer>
-    © 2026 Barbearia MG — Todos os direitos reservados.
-    <p>Estilo, qualidade e tradição.</p>
-  </footer>
+    <!-- 11 VERSÍCULOS BÍBLICOS -->
 
-</body>
-</html>
+    <section class="biblia">
+
+      <h2>🙏 Palavra de Deus</h2>
+
+      <p class="biblia-intro">
+        Que a presença de Deus abençoe sua vida,
+        sua família e cada novo dia.
+      </p>
+
+      <div class="versiculo">
+        <h3>1. Salmos 23:1</h3>
+        <p>O Senhor é o meu pastor; nada me faltará.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>2. Provérbios 16:3</h3>
+        <p>Confia ao Senhor as tuas obras, e teus pensamentos serão estabelecidos.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>3. Filipenses 4:13</h3>
+        <p>Posso todas as coisas em Cristo que me fortalece.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>4. Salmos 46:1</h3>
+        <p>Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>5. Provérbios 3:5</h3>
+        <p>Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>6. Mateus 5:16</h3>
+        <p>Assim resplandeça a vossa luz diante dos homens, para que vejam as vossas boas obras e glorifiquem a vosso Pai, que está nos céus.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>7. Josué 1:9</h3>
+        <p>Esforça-te e tem bom ânimo; não temas, nem te espantes, porque o Senhor, teu Deus, é contigo, por onde quer que andares.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>8. Salmos 37:5</h3>
+        <p>Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>9. 1 Coríntios 16:14</h3>
+        <p>Todas as vossas coisas sejam feitas com amor.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>10. Números 6:24</h3>
+        <p>O Senhor te abençoe e te guarde.</p>
+      </div>
+
+      <div class="versiculo">
