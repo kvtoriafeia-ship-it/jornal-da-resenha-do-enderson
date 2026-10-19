@@ -1,13 +1,14 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Barbearia MG | Estilo & Tradição</title>
+  <title>Barbearia MG | Cortes & Estilo</title>
 
-  <meta name="description" content="Barbearia MG. Cortes, degradê, barba e atendimento de qualidade. Agende seu horário pelo WhatsApp.">
+  <meta name="description"
+    content="Barbearia MG: cortes modernos, corte do Oruam vermelho, degradê, reflexo, nevou e muito mais.">
 
   <style>
     * {
@@ -22,46 +23,49 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #101010;
-      color: white;
+      background: #090909;
+      color: #fff;
     }
 
     header {
       text-align: center;
       padding: 35px 15px;
-      background: #080808;
-      border-bottom: 2px solid #c9a227;
+      background: #050505;
+      border-bottom: 3px solid #ff1010;
     }
 
     .logo {
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 5px;
-      color: #c9a227;
+      color: #ff2020;
     }
 
     header h1 {
-      font-size: 34px;
+      font-size: 35px;
       margin: 12px 0;
-      color: #e5c45b;
+      color: #ff2020;
     }
 
     header p {
-      color: #ccc;
+      color: #ddd;
     }
 
     .banner {
       text-align: center;
-      padding: 55px 18px;
+      padding: 60px 18px;
       background:
-        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.85)),
+        linear-gradient(
+          rgba(0,0,0,.72),
+          rgba(20,0,0,.88)
+        ),
         url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1400&q=85")
         center/cover;
     }
 
     .banner h2 {
-      color: #e5c45b;
+      color: #ff2020;
       font-size: 29px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .banner p {
@@ -70,19 +74,19 @@
     }
 
     .container {
-      max-width: 850px;
+      max-width: 900px;
       margin: auto;
       padding: 25px 16px;
     }
 
     .section-title {
       text-align: center;
-      color: #e5c45b;
-      margin: 25px 0;
+      color: #ff2020;
+      margin: 30px 0 22px;
       font-size: 25px;
     }
 
-    /* GALERIA DE FOTOS */
+    /* GALERIA */
 
     .galeria {
       display: grid;
@@ -94,16 +98,16 @@
     .foto {
       overflow: hidden;
       border-radius: 12px;
-      border: 1px solid #6b5720;
-      background: #1c1c1c;
+      border: 1px solid #790000;
+      background: #171717;
     }
 
     .foto img {
       width: 100%;
-      height: 190px;
-      object-fit: cover;
+      height: 200px;
       display: block;
-      transition: transform .35s;
+      object-fit: cover;
+      transition: transform .3s;
     }
 
     .foto:hover img {
@@ -111,11 +115,11 @@
     }
 
     .foto p {
-      padding: 12px;
-      color: #e5c45b;
+      padding: 12px 5px;
+      color: #ff3030;
       text-align: center;
-      font-weight: bold;
       font-size: 14px;
+      font-weight: bold;
     }
 
     /* SERVIÇOS */
@@ -127,36 +131,43 @@
       gap: 12px;
       padding: 17px 15px;
       margin-bottom: 12px;
-      background: #1c1c1c;
-      border: 1px solid #383020;
+      background: #171717;
+      border: 1px solid #480b0b;
       border-radius: 10px;
+      transition: .25s;
+    }
+
+    .item:hover {
+      border-color: #ff2020;
+      background: #211010;
     }
 
     .item h3 {
-      font-size: 17px;
-      margin-bottom: 6px;
+      font-size: 16px;
+      margin-bottom: 7px;
+      color: #fff;
     }
 
     .item p {
       font-size: 13px;
-      color: #aaa;
-      line-height: 1.5;
+      color: #bbb;
+      line-height: 1.6;
     }
 
     .price {
-      color: #e5c45b;
+      color: #ff3030;
       font-weight: bold;
-      font-size: 19px;
+      font-size: 18px;
       white-space: nowrap;
     }
 
     .tag {
       display: inline-block;
-      margin-top: 7px;
+      margin-top: 8px;
       font-size: 10px;
-      color: #111;
-      background: #d8b64c;
-      padding: 4px 7px;
+      color: white;
+      background: #c90000;
+      padding: 5px 7px;
       border-radius: 4px;
       font-weight: bold;
     }
@@ -166,26 +177,28 @@
     .info {
       text-align: center;
       padding: 25px 15px;
-      background: #191919;
+      background: #171717;
       margin-top: 30px;
-      border: 1px solid #383020;
+      border: 1px solid #790000;
       border-radius: 10px;
       line-height: 2;
     }
 
     .info h2 {
-      color: #e5c45b;
+      color: #ff2020;
       margin-bottom: 10px;
     }
+
+    /* WHATSAPP */
 
     .whatsapp {
       display: block;
       width: 100%;
       margin-top: 22px;
-      padding: 16px;
+      padding: 17px;
       text-align: center;
-      background: #c9a227;
-      color: #111;
+      background: #e00000;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
@@ -193,22 +206,22 @@
     }
 
     .whatsapp:hover {
-      background: #efd16c;
+      background: #ff3030;
       transform: translateY(-2px);
     }
 
-    /* VERSÍCULOS BÍBLICOS */
+    /* VERSÍCULOS */
 
     .biblia {
       margin-top: 45px;
-      padding: 28px 18px;
-      background: linear-gradient(145deg, #191919, #211b0d);
-      border: 1px solid #806722;
+      padding: 25px 16px;
+      background: linear-gradient(145deg, #171717, #210707);
+      border: 1px solid #790000;
       border-radius: 14px;
     }
 
     .biblia h2 {
-      color: #e5c45b;
+      color: #ff2020;
       text-align: center;
       margin-bottom: 12px;
       font-size: 25px;
@@ -222,11 +235,17 @@
     }
 
     .versiculo {
-      padding: 16px 12px;
+      padding: 15px 12px;
       margin-bottom: 12px;
-      background: rgba(0,0,0,.3);
-      border-left: 3px solid #c9a227;
+      background: #100b0b;
+      border-left: 3px solid #ff2020;
       border-radius: 5px;
+    }
+
+    .versiculo h3 {
+      color: #ff3030;
+      font-size: 14px;
+      margin-bottom: 7px;
     }
 
     .versiculo p {
@@ -235,20 +254,14 @@
       line-height: 1.8;
     }
 
-    .versiculo h3 {
-      color: #e5c45b;
-      font-size: 14px;
-      margin-bottom: 7px;
-    }
-
     footer {
       text-align: center;
       padding: 25px 12px;
-      color: #888;
+      color: #999;
       font-size: 12px;
       line-height: 2;
-      margin-top: 15px;
-      border-top: 1px solid #302819;
+      margin-top: 20px;
+      border-top: 1px solid #480b0b;
     }
 
     @media (max-width: 420px) {
@@ -265,11 +278,15 @@
       }
 
       .item h3 {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       .price {
-        font-size: 17px;
+        font-size: 15px;
+      }
+
+      .item {
+        padding: 14px 10px;
       }
     }
   </style>
@@ -277,17 +294,22 @@
 
 <body>
 
+  <!-- CABEÇALHO -->
+
   <header>
     <div class="logo">✂ ESTILO & TRADIÇÃO ✂</div>
     <h1>BARBEARIA MG</h1>
     <p>Seu estilo começa aqui.</p>
   </header>
 
+  <!-- BANNER PRINCIPAL -->
+
   <section class="banner">
-    <h2>NOSSO CARDÁPIO</h2>
+    <h2>NOSSOS CORTES & ESTILOS 🔥</h2>
     <p>
-      Confira nossos serviços e preços.<br>
-      Qualidade, estilo e atendimento de primeira!
+      Do clássico ao cria! 💈<br>
+      Corte do Oruam vermelho, nevou, reflexo, degradê e muito mais.<br>
+      Seu estilo, sua identidade!
     </p>
   </section>
 
@@ -295,7 +317,7 @@
 
     <!-- GALERIA DE FOTOS -->
 
-    <h2 class="section-title">📸 Nosso Estilo</h2>
+    <h2 class="section-title">📸 Conheça Nosso Estilo</h2>
 
     <section class="galeria">
 
@@ -304,13 +326,13 @@
           src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"
           alt="Ambiente de barbearia"
           loading="lazy">
-        <p>Nosso Ambiente</p>
+        <p>Ambiente da Barbearia</p>
       </div>
 
       <div class="foto">
         <img
           src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
-          alt="Barbeiro trabalhando em um corte"
+          alt="Corte masculino"
           loading="lazy">
         <p>Cortes Modernos</p>
       </div>
@@ -318,163 +340,213 @@
       <div class="foto">
         <img
           src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80"
-          alt="Ferramentas e trabalho de barbeiro"
+          alt="Trabalho de barbeiro"
           loading="lazy">
-        <p>Estilo e Precisão</p>
+        <p>Precisão no Acabamento</p>
       </div>
 
       <div class="foto">
         <img
           src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"
-          alt="Corte masculino em barbearia"
+          alt="Estilo masculino"
           loading="lazy">
         <p>Visual Renovado</p>
       </div>
 
     </section>
 
-    ```html
-<!-- CARDÁPIO DE CORTES -->
+    <!-- CARDÁPIO DE CORTES -->
 
-<h2 class="section-title">💈 Cortes Famosos do RJ</h2>
+    <h2 class="section-title">🔥 Cortes Famosos do RJ</h2>
 
-<div class="item">
-  <div>
-    <h3>🔥 Corte do Jaca</h3>
-    <p>Degradê marcante, inspirado no estilo popular das comunidades cariocas.</p>
-    <span class="tag">ESTILO RJ</span>
-  </div>
-  <div class="price">R$ 35</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>🔴 Corte do Oruam — Cabelo Vermelho</h3>
+        <p>Cabelo tingido de vermelho, inspirado no visual do rapper, com corte e acabamento personalizado.</p>
+        <span class="tag">DESTAQUE</span>
+      </div>
+      <div class="price">R$ 100</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>❄️ Nevou</h3>
-    <p>Cabelo descolorido em tom bem claro, com acabamento estiloso.</p>
-  </div>
-  <div class="price">R$ 80</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>🔥 Corte do Jaca</h3>
+        <p>Degradê marcante inspirado no estilo popular carioca.</p>
+        <span class="tag">ESTILO RJ</span>
+      </div>
+      <div class="price">R$ 35</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>💈 Americano</h3>
-    <p>Laterais baixas e acabamento alinhado, muito pedido nas barbearias.</p>
-  </div>
-  <div class="price">R$ 35</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>❄️ Nevou</h3>
+        <p>Descoloração para deixar o cabelo bem claro.</p>
+      </div>
+      <div class="price">R$ 80</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>✂️ Low Fade</h3>
-    <p>Degradê baixo, discreto e moderno.</p>
-  </div>
-  <div class="price">R$ 35</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>✨ Reflexo</h3>
+        <p>Mechas claras para destacar o cabelo.</p>
+      </div>
+      <div class="price">R$ 60</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>🔥 Mid Fade</h3>
-    <p>Degradê médio com transição suave nas laterais.</p>
-  </div>
-  <div class="price">R$ 35</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>🔥 Reflexo Alinhado</h3>
+        <p>Reflexos com acabamento definido e corte alinhado.</p>
+      </div>
+      <div class="price">R$ 70</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>⚡ High Fade</h3>
-    <p>Degradê alto para um visual marcante.</p>
-  </div>
-  <div class="price">R$ 35</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>💎 Platinado</h3>
+        <p>Coloração em tom bem claro, com efeito platinado.</p>
+      </div>
+      <div class="price">R$ 90</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>💎 Taper Fade</h3>
-    <p>Acabamento gradual nas costeletas e na nuca.</p>
-  </div>
-  <div class="price">R$ 35</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>🎨 Luzes Masculinas</h3>
+        <p>Mechas para iluminar e destacar o visual.</p>
+      </div>
+      <div class="price">R$ 70</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>😎 Mullet</h3>
-    <p>Estilo retrô com laterais curtas e comprimento maior atrás.</p>
-  </div>
-  <div class="price">R$ 40</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>🇺🇸 Corte Americano</h3>
+        <p>Laterais degradê e topo personalizado.</p>
+      </div>
+      <div class="price">R$ 35</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>👑 Moicano</h3>
-    <p>Laterais baixas e destaque no centro do cabelo.</p>
-  </div>
-  <div class="price">R$ 35</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>✂️ Low Fade</h3>
+        <p>Degradê baixo, discreto e moderno.</p>
+      </div>
+      <div class="price">R$ 35</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>💥 Disfarçado com Risco</h3>
-    <p>Degradê com risco desenhado para personalizar o visual.</p>
-  </div>
-  <div class="price">R$ 40</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>🔥 Mid Fade</h3>
+        <p>Degradê médio com transição suave.</p>
+      </div>
+      <div class="price">R$ 35</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>🌀 Nudred</h3>
-    <p>Textura com pequenos cachos e acabamento nas laterais.</p>
-  </div>
-  <div class="price">R$ 40</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>⚡ High Fade</h3>
+        <p>Degradê alto para um visual marcante.</p>
+      </div>
+      <div class="price">R$ 35</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>✂️ Corte Social</h3>
-    <p>Clássico, alinhado e ideal para qualquer ocasião.</p>
-  </div>
-  <div class="price">R$ 30</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>💈 Taper Fade</h3>
+        <p>Acabamento gradual nas costeletas e na nuca.</p>
+      </div>
+      <div class="price">R$ 35</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>🧒 Corte Infantil</h3>
-    <p>Cortes estilosos para os pequenos.</p>
-  </div>
-  <div class="price">R$ 25</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>😎 Mullet</h3>
+        <p>Laterais curtas e comprimento maior atrás.</p>
+      </div>
+      <div class="price">R$ 40</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>🧔 Corte + Barba</h3>
-    <p>Combo completo com acabamento profissional.</p>
-  </div>
-  <div class="price">R$ 50</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>👑 Moicano</h3>
+        <p>Laterais baixas com destaque no centro.</p>
+      </div>
+      <div class="price">R$ 35</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>✨ Platinado / Descoloração</h3>
-    <p>Transformação da cor para um visual mais claro. Valor conforme o cabelo.</p>
-  </div>
-  <div class="price">A consultar</div>
-</div>
+    <div class="item">
+      <div>
+        <h3>💥 Corte com Risco</h3>
+        <p>Desenho personalizado para completar o corte.</p>
+      </div>
+      <div class="price">R$ 40</div>
+    </div>
 
-<div class="item">
-  <div>
-    <h3>📏 Pezinho</h3>
-    <p>Acabamento da nuca e das laterais.</p>
-  </div>
-  <div class="price">R$ 10</div>
-</div>
-```
+    <div class="item">
+      <div>
+        <h3>🌀 Nudred</h3>
+        <p>Textura com cachos pequenos e acabamento nas laterais.</p>
+      </div>
+      <div class="price">R$ 40</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>✂️ Corte na Tesoura</h3>
+        <p>Corte personalizado com acabamento clássico.</p>
+      </div>
+      <div class="price">R$ 35</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>💇 Corte Tradicional</h3>
+        <p>Corte clássico na tesoura ou máquina.</p>
+      </div>
+      <div class="price">R$ 30</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>🧒 Corte Infantil</h3>
+        <p>Cortes estilosos para os pequenos.</p>
+      </div>
+      <div class="price">R$ 25</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>🧔 Corte + Barba</h3>
+        <p>Combo completo com barba modelada.</p>
+      </div>
+      <div class="price">R$ 50</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>🪒 Barba</h3>
+        <p>Modelagem e acabamento da barba.</p>
+      </div>
+      <div class="price">R$ 20</div>
+    </div>
+
+    <div class="item">
+      <div>
+        <h3>✨ Pezinho</h3>
+        <p>Acabamento da nuca e das laterais.</p>
+      </div>
+      <div class="price">R$ 10</div>
+    </div>
+
     <!-- INFORMAÇÕES -->
 
     <section class="info">
       <h2>📍 Informações</h2>
       <p>📅 Segunda a sábado</p>
       <p>🕒 14h às 21h</p>
-      <p>📍 Rio de Janeiro - MG</p>
+      <p>📍 Atualize aqui seu endereço correto</p>
     </section>
+
+    <!-- WHATSAPP -->
 
     <a
       class="whatsapp"
@@ -491,8 +563,8 @@
       <h2>🙏 Palavra de Deus</h2>
 
       <p class="biblia-intro">
-        Que a presença de Deus abençoe sua vida,
-        sua família e cada novo dia.
+        Que Deus abençoe sua vida, sua família,
+        seu trabalho e cada novo dia!
       </p>
 
       <div class="versiculo">
@@ -501,48 +573,66 @@
       </div>
 
       <div class="versiculo">
-        <h3>2. Provérbios 16:3</h3>
-        <p>Confia ao Senhor as tuas obras, e teus pensamentos serão estabelecidos.</p>
-      </div>
-
-      <div class="versiculo">
-        <h3>3. Filipenses 4:13</h3>
+        <h3>2. Filipenses 4:13</h3>
         <p>Posso todas as coisas em Cristo que me fortalece.</p>
       </div>
 
       <div class="versiculo">
-        <h3>4. Salmos 46:1</h3>
+        <h3>3. Salmos 46:1</h3>
         <p>Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia.</p>
       </div>
 
       <div class="versiculo">
-        <h3>5. Provérbios 3:5</h3>
+        <h3>4. Provérbios 3:5</h3>
         <p>Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento.</p>
       </div>
 
       <div class="versiculo">
-        <h3>6. Mateus 5:16</h3>
-        <p>Assim resplandeça a vossa luz diante dos homens, para que vejam as vossas boas obras e glorifiquem a vosso Pai, que está nos céus.</p>
+        <h3>5. Josué 1:9</h3>
+        <p>Esforça-te e tem bom ânimo; não temas, porque o Senhor, teu Deus, é contigo.</p>
       </div>
 
       <div class="versiculo">
-        <h3>7. Josué 1:9</h3>
-        <p>Esforça-te e tem bom ânimo; não temas, nem te espantes, porque o Senhor, teu Deus, é contigo, por onde quer que andares.</p>
-      </div>
-
-      <div class="versiculo">
-        <h3>8. Salmos 37:5</h3>
+        <h3>6. Salmos 37:5</h3>
         <p>Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.</p>
       </div>
 
       <div class="versiculo">
-        <h3>9. 1 Coríntios 16:14</h3>
+        <h3>7. 1 Coríntios 16:14</h3>
         <p>Todas as vossas coisas sejam feitas com amor.</p>
       </div>
 
       <div class="versiculo">
-        <h3>10. Números 6:24</h3>
+        <h3>8. Números 6:24</h3>
         <p>O Senhor te abençoe e te guarde.</p>
       </div>
 
       <div class="versiculo">
+        <h3>9. Salmos 118:24</h3>
+        <p>Este é o dia que fez o Senhor; regozijemo-nos e alegremo-nos nele.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>10. Mateus 5:16</h3>
+        <p>Assim resplandeça a vossa luz diante dos homens, para que vejam as vossas boas obras e glorifiquem a vosso Pai, que está nos céus.</p>
+      </div>
+
+      <div class="versiculo">
+        <h3>11. Provérbios 16:3</h3>
+        <p>Confia ao Senhor as tuas obras, e teus pensamentos serão estabelecidos.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+
+  <footer>
+    © 2026 Barbearia MG — Todos os direitos reservados.
+    <p>Estilo, qualidade, tradição e fé. 🙏</p>
+  </footer>
+
+</body>
+</html>
+```
